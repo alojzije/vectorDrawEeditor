@@ -17,7 +17,7 @@ public class Point {
     }
 
     public int getY() {
-        return x;
+        return y;
     }
 
     public Point translate(Point dp) {

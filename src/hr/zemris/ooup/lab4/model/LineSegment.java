@@ -1,0 +1,67 @@
+package hr.zemris.ooup.lab4.model;
+
+import hr.zemris.ooup.lab4.GeometryUtil;
+import hr.zemris.ooup.lab4.Point;
+import hr.zemris.ooup.lab4.Rectangle;
+
+import static java.lang.Math.abs;
+
+/**
+ * Created by alojzije on 7.6.2014..
+ */
+public class LineSegment extends AbstractGraphicalObject {
+
+    public LineSegment(Point start, Point end) {
+      super(new Point[]{new Point(0, 0), new Point(10, 0)});
+       Point s,e;
+        if (start.getX() == end.getX()) {
+            if (start.getY() < end.getY()) {
+                s = start;
+                e = end;
+            } else {
+                s = end;
+                e = start;
+            }
+        } else {
+            if (start.getX() < end.getX()) {
+                s = start;
+                e = end;
+            } else {
+                s = end;
+                e = start;
+            }
+        }
+       this.setHotPoint(0,s);
+       this.setHotPoint(1,e);
+
+    }
+    public LineSegment() {
+        super(new Point[]{new Point(0, 0), new Point(10, 0)});
+    }
+
+    @Override
+    public Rectangle getBoundingBox() {
+        Point s = this.getHotPoint(0);
+        Point e = this.getHotPoint(1);
+
+        int width  = abs(e.getX() - s.getX());
+        int height = abs(e.getY() - s.getY());
+
+        return new Rectangle(s.getX(), s.getY(), width, height);
+    }
+
+    @Override
+    public double selectionDistance(Point mousePoint) {
+        return GeometryUtil.distanceFromLineSegment(this.getHotPoint(0), this.getHotPoint(1), mousePoint);
+    }
+
+    @Override
+    public String getShapeName() {
+        return "line";
+    }
+
+    @Override
+    public GraphicalObject duplicate() {
+        return new LineSegment(this.getHotPoint(0), this.getHotPoint(1));
+    }
+}
