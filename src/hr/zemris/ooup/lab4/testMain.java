@@ -1,5 +1,6 @@
 package hr.zemris.ooup.lab4;
 
+import hr.zemris.ooup.lab4.model.GraphicalObject;
 import hr.zemris.ooup.lab4.model.LineSegment;
 
 /**
@@ -29,5 +30,11 @@ public class testMain {
         System.out.println("rect r: (" + r.getX() + ", " + r.getY() + "), "+ r.getWidth() + "x" + r.getHeight());
         double dist= ls.selectionDistance(t);
         System.out.println("distance line from t: "+ dist);
+
+        GraphicalObject dupl = ls.duplicate();
+        System.out.println(dupl.getShapeName() + " nb of points: " + dupl.getNumberOfHotPoints());
+        System.out.println("Dupl line  = (" +dupl.getHotPoint(0).getX()+ ","+ dupl.getHotPoint(0).getY()+"), ("+
+                dupl.getHotPoint(1).getX()+" " +dupl.getHotPoint(1).getY()+")");
+
     }
 }

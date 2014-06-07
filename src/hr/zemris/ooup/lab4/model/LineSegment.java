@@ -10,6 +10,11 @@ import static java.lang.Math.abs;
  * Created by alojzije on 7.6.2014..
  */
 public class LineSegment extends AbstractGraphicalObject {
+    // hotpoints[0] = pocetna
+    // hotpoints[1] = konacna
+    public LineSegment() {
+        super(new Point[]{new Point(0, 0), new Point(10, 0)});
+    }
 
     public LineSegment(Point start, Point end) {
       super(new Point[]{new Point(0, 0), new Point(10, 0)});
@@ -35,15 +40,14 @@ public class LineSegment extends AbstractGraphicalObject {
        this.setHotPoint(1,e);
 
     }
-    public LineSegment() {
-        super(new Point[]{new Point(0, 0), new Point(10, 0)});
-    }
+
 
     @Override
     public Rectangle getBoundingBox() {
         Point s = this.getHotPoint(0);
         Point e = this.getHotPoint(1);
-
+        int x = s.getX();
+        int y = s.getY() < e.getY( )? s.getY() : e.getY();
         int width  = abs(e.getX() - s.getX());
         int height = abs(e.getY() - s.getY());
 
