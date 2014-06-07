@@ -1,3 +1,5 @@
+package hr.zemris.ooup.lab4;
+
 /**
  * Created by alojzije on 7.6.2014..
  */
@@ -11,6 +13,10 @@ public class Point {
     }
 
     public int getX() {
+        return x;
+    }
+
+    public int getY() {
         return x;
     }
 
