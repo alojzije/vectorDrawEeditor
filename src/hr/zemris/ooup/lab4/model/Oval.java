@@ -12,8 +12,10 @@ import static java.lang.Math.abs;
 public class Oval extends AbstractGraphicalObject {
     // hotpoints[0] = donji
     // hotpoints[1] = desni
+    Point center;
     public Oval() {
         super(new Point[]{new Point(0, 10), new Point(10, 0)});
+        center = new Point(0,0);
     }
     public Oval(Point p1, Point p2) {
         super(new Point[]{new Point(0, 10), new Point(10, 0)});
@@ -27,6 +29,7 @@ public class Oval extends AbstractGraphicalObject {
         }
         this.setHotPoint(0, bottom);
         this.setHotPoint(1, right);
+        center = new Point(bottom.getX(),right.getY());
     }
 
 
@@ -44,9 +47,7 @@ public class Oval extends AbstractGraphicalObject {
 
     @Override
     public double selectionDistance(Point mousePoint) {
-        int cx = this.getHotPoint(0).getX();
-        int cy = this.getHotPoint(1).getY();
-        return GeometryUtil.distanceFromPoint(new Point(cx,cy), mousePoint);
+        return GeometryUtil.distanceFromPoint(center, mousePoint);
     }
 
     @Override
