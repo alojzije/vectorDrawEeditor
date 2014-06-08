@@ -78,4 +78,16 @@ public class Oval extends AbstractGraphicalObject {
     public GraphicalObject duplicate() {
         return new Oval(this.getHotPoint(0), this.getHotPoint(1));
     }
+    @Override
+    public void translate(Point delta) {
+        Point curr = getHotPoint(0);
+        int deltaX =  delta.getX() - curr.getX();
+        int deltaY =  delta.getY() - curr.getY();
+        for (int i = 0; i<getNumberOfHotPoints(); i++) {
+            curr = getHotPoint(i);
+            setHotPoint(i, curr.translate(new Point(deltaX, deltaY)));
+        }
+        center = new Point(getHotPoint(0).getX(),getHotPoint(1).getY());
+    }
+
 }

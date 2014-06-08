@@ -3,6 +3,7 @@ package hr.zemris.ooup.lab4.state;
 import hr.zemris.ooup.lab4.DocumentModel;
 import hr.zemris.ooup.lab4.Renderer;
 import hr.zemris.ooup.lab4.model.GraphicalObject;
+import hr.zemris.ooup.lab4.model.Oval;
 import hr.zemris.ooup.lab4.util.Point;
 
 /**
@@ -11,6 +12,7 @@ import hr.zemris.ooup.lab4.util.Point;
 public class AddShapeState implements State {
     private GraphicalObject protoype;
     private DocumentModel model;
+    private static int i = 200;
 
     public AddShapeState(DocumentModel model, GraphicalObject protoype) {
         this.model = model;
@@ -18,9 +20,16 @@ public class AddShapeState implements State {
     }
     @Override
     public void mouseDown(Point mousePoint, boolean shiftDown, boolean ctrlDown) {
+
+
         GraphicalObject obj = protoype.duplicate();
+
+
         obj.translate(mousePoint);
+
         model.addGraphicalObject(obj);
+
+
 
     }
 

@@ -29,7 +29,7 @@ public class G2DRendererImpl implements Renderer{
             yPoints[i] = points[i].getY();
         }
         g2d.setColor(Color.blue);
-        g2d.drawPolygon(xPoints,yPoints,points.length);
+        g2d.fillPolygon(xPoints,yPoints,points.length);
         g2d.setColor((Color.red));
         g2d.drawPolyline(xPoints,yPoints,points.length);
     }
