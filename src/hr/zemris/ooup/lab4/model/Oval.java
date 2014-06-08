@@ -1,8 +1,8 @@
 package hr.zemris.ooup.lab4.model;
 
-import hr.zemris.ooup.lab4.GeometryUtil;
-import hr.zemris.ooup.lab4.Point;
-import hr.zemris.ooup.lab4.Rectangle;
+import hr.zemris.ooup.lab4.util.GeometryUtil;
+import hr.zemris.ooup.lab4.util.Point;
+import hr.zemris.ooup.lab4.util.Rectangle;
 
 import static java.lang.Math.abs;
 

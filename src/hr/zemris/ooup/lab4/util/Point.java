@@ -1,4 +1,4 @@
-package hr.zemris.ooup.lab4;
+package hr.zemris.ooup.lab4.util;
 
 /**
  * Created by alojzije on 7.6.2014..

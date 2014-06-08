@@ -1,5 +1,7 @@
 package hr.zemris.ooup.lab4;
 
+import hr.zemris.ooup.lab4.util.Point;
+
 /**
  * Created by alojzije on 7.6.2014..
  */

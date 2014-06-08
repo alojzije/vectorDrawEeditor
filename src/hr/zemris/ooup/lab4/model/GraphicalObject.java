@@ -1,8 +1,8 @@
 package hr.zemris.ooup.lab4.model;
 
 import hr.zemris.ooup.lab4.GraphicalObjectListener;
-import hr.zemris.ooup.lab4.Point;
-import hr.zemris.ooup.lab4.Rectangle;
+import hr.zemris.ooup.lab4.util.Point;
+import hr.zemris.ooup.lab4.util.Rectangle;
 
 /**
  * Created by alojzije on 7.6.2014..

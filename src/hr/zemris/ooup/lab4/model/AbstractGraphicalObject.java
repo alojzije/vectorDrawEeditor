@@ -1,7 +1,7 @@
 package hr.zemris.ooup.lab4.model;
 
 import hr.zemris.ooup.lab4.GraphicalObjectListener;
-import hr.zemris.ooup.lab4.Point;
+import hr.zemris.ooup.lab4.util.Point;
 
 import java.util.ArrayList;
 import java.util.List;

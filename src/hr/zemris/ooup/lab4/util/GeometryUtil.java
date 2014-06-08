@@ -1,4 +1,4 @@
-package hr.zemris.ooup.lab4;
+package hr.zemris.ooup.lab4.util;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;

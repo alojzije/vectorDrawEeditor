@@ -1,8 +1,9 @@
 package hr.zemris.ooup.lab4;
 
 import hr.zemris.ooup.lab4.model.GraphicalObject;
-import hr.zemris.ooup.lab4.model.LineSegment;
 import hr.zemris.ooup.lab4.model.Oval;
+import hr.zemris.ooup.lab4.util.Point;
+import hr.zemris.ooup.lab4.util.Rectangle;
 
 /**
  * Created by alojzije on 7.6.2014..
