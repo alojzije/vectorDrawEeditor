@@ -39,7 +39,7 @@ public class GUI extends JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
-        //toolbar.setBorder(BorderFactory.createLineBorder(Color.black));
+        toolbar.setBorder(BorderFactory.createLineBorder(Color.black));
         for (Object obj : objects) {
             docModel.addGraphicalObject((GraphicalObject) obj);
             buttons.add(new JButton(((GraphicalObject) obj).getShapeName()));
@@ -48,11 +48,11 @@ public class GUI extends JFrame {
         canvas.paintComponent(new myGraphic());
         ListenForMouse lForMouse = new ListenForMouse();
         canvas.addMouseListener(lForMouse);
-        ListenForKey lForKey = new ListenForKey();
-        this.addKeyListener(lForKey);
         this.add(toolbar,BorderLayout.NORTH);
         this.add(canvas, BorderLayout.CENTER);
 
+        KeyboardFocusManager kfm = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+        kfm.addKeyEventDispatcher(new MyDispatcher());
     }
 
     private class ListenForMouse implements MouseListener {
@@ -82,22 +82,17 @@ public class GUI extends JFrame {
         }
     }
 
-    private class ListenForKey implements KeyListener {
-        @Override
-        public void keyTyped(KeyEvent e) {
-        }
+    private class MyDispatcher implements KeyEventDispatcher {
 
         @Override
-        public void keyPressed(KeyEvent e) {
-            System.out.println("la");
-            if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                System.out.println("esc");
+        public boolean dispatchKeyEvent(KeyEvent e) {
+            if(e.getID() == KeyEvent.KEY_PRESSED) {
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    currentState = new IdleState();
+                }
             }
-        }
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-
+            return false;
         }
     }
+
 }

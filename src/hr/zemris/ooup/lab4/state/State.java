@@ -20,7 +20,7 @@ public interface State {
     void afterDeaw(Renderer r, GraphicalObject graphicalObject);
 
     //poziva se nakon sto je platno nacrtalo citav crtez
-    void afterDrae(Renderer renderer);
+    void afterDraw(Renderer renderer);
 
     //poziva se kada program napusta ovo stanje kako bi preslo u drugo
     void onLeaving();

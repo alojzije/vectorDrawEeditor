@@ -34,7 +34,7 @@ public class IdleState implements State {
     }
 
     @Override
-    public void afterDrae(Renderer renderer) {
+    public void afterDraw(Renderer renderer) {
 
     }
 
