@@ -1,8 +1,11 @@
 package hr.zemris.ooup.lab4.model;
 
+import hr.zemris.ooup.lab4.Renderer;
 import hr.zemris.ooup.lab4.util.GeometryUtil;
 import hr.zemris.ooup.lab4.util.Point;
 import hr.zemris.ooup.lab4.util.Rectangle;
+
+import java.util.ArrayList;
 
 import static java.lang.Math.abs;
 
@@ -48,6 +51,22 @@ public class Oval extends AbstractGraphicalObject {
     @Override
     public double selectionDistance(Point mousePoint) {
         return GeometryUtil.distanceFromPoint(center, mousePoint);
+    }
+
+    @Override
+    public void render(Renderer r) {
+        Rectangle rect = getBoundingBox();
+        int width = rect.getWidth();
+        int height = rect.getHeight();
+
+        ArrayList<Point>points = new ArrayList<Point>();
+        for (int t = 0; t<=360; t+=10) {
+            int eX = center.getX() + (int) (width  * Math.cos(Math.toRadians(t)));
+            int eY = center.getY() + (int) (height * Math.sin(Math.toRadians(t)));
+            points.add(new Point(eX, eY));
+        }
+
+        r.fillPolygon( points.toArray(new Point[points.size()]));
     }
 
     @Override

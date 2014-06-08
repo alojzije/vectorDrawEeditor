@@ -1,5 +1,6 @@
 package hr.zemris.ooup.lab4.model;
 
+import hr.zemris.ooup.lab4.Renderer;
 import hr.zemris.ooup.lab4.util.GeometryUtil;
 import hr.zemris.ooup.lab4.util.Point;
 import hr.zemris.ooup.lab4.util.Rectangle;
@@ -57,6 +58,11 @@ public class LineSegment extends AbstractGraphicalObject {
     @Override
     public double selectionDistance(Point mousePoint) {
         return GeometryUtil.distanceFromLineSegment(this.getHotPoint(0), this.getHotPoint(1), mousePoint);
+    }
+
+    @Override
+    public void render(Renderer r) {
+        r.drawLine(this.getHotPoint(0), this.getHotPoint(1));
     }
 
     @Override

@@ -60,7 +60,7 @@ public class DocumentModel {
         if (obj.isSelected()) selectedObjects.add(obj);
         obj.addGraphicalObjectListener(goListener);
     }
-    
+
     // Uklanjanje objekta iz dokumenta (pazite je li vec selektiran; odregistrirajte model kao promatraca)
     public void removeGraphicalObject(GraphicalObject obj) {
         if (objects.contains(obj)) {
