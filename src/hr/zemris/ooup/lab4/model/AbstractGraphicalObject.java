@@ -65,7 +65,12 @@ public abstract class AbstractGraphicalObject implements GraphicalObject{
     @Override
     public void translate(Point delta) {
         for (int i = 0; i<getNumberOfHotPoints(); i++) {
-            hotPoints[i] = hotPoints[i].translate(delta);
+
+            Point curr = getHotPoint(i);
+            System.out.println(getHotPoint(i).getX() +" "+ getHotPoint(i).getY());
+            setHotPoint(i, curr.translate(delta));
+            System.out.println(getHotPoint(i).getX() +" "+ getHotPoint(i).getY());
+
         }
     }
 

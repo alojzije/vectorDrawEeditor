@@ -17,7 +17,7 @@ public interface State {
     void keyPressed(int keyCode);
 
     //poziva se nakon sto je platno nacrtalo graficki objekt predan kao arg
-    void afterDeaw(Renderer r, GraphicalObject graphicalObject);
+    void afterDraw(Renderer r, GraphicalObject graphicalObject);
 
     //poziva se nakon sto je platno nacrtalo citav crtez
     void afterDraw(Renderer renderer);

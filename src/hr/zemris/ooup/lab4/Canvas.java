@@ -13,7 +13,6 @@ public class Canvas extends JPanel {
 
     public Canvas(DocumentModel docModel) {
         this.docModel = docModel;
-        this.setBorder(BorderFactory.createLineBorder(Color.black));
 
     }
 

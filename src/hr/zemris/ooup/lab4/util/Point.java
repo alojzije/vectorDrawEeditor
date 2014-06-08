@@ -21,10 +21,10 @@ public class Point {
     }
 
     public Point translate(Point dp) {
-        return new Point(x + dp.x, y + dp.y);
+            return new Point(x + dp.getX(), y + dp.getY());
     }
 
     public Point difference(Point p) {
-        return new Point(x - p.x, y - p.y);
+        return new Point(x - p.getX(), y - p.getY());
     }
 }
