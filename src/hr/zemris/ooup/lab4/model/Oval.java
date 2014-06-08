@@ -38,7 +38,7 @@ public class Oval extends AbstractGraphicalObject {
         Point b = this.getHotPoint(0); //bottom
         Point r = this.getHotPoint(1); //right
         int x = b.getX() - (r.getX() - b.getX());
-        int y = r.getY();
+        int y = b.getY();
         int width = r.getX() - x;
         int height = abs(r.getY() - y)*2;
 

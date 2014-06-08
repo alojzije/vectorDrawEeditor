@@ -2,15 +2,16 @@ package hr.zemris.ooup.lab4;
 
 import hr.zemris.ooup.lab4.model.GraphicalObject;
 import hr.zemris.ooup.lab4.model.LineSegment;
+import hr.zemris.ooup.lab4.model.Oval;
 
 /**
  * Created by alojzije on 7.6.2014..
  */
 public class testMain {
     public static void main(String[] args) {
-        Point s = new Point(2,5);
+        Point s = new Point(10,50);
         System.out.println("Point s: (" + s.getX() + ", " + s.getY() +")");
-        Point e = new Point(4,5);
+        Point e = new Point(15,10);
         System.out.println("Point e: (" + e.getX() + ", " + e.getY() +")");
 
         Point t = s.translate(e);
@@ -20,7 +21,7 @@ public class testMain {
 
 
 
-        LineSegment ls = new LineSegment(e,s);
+       Oval ls = new Oval(e,s);
         System.out.println(ls.getShapeName() + " nb of points: " + ls.getNumberOfHotPoints());
         System.out.println("Line = (" +ls.getHotPoint(0).getX()+ ","+ ls.getHotPoint(0).getY()+"), ("+
                             ls.getHotPoint(1).getX()+" " +ls.getHotPoint(1).getY()+")");
