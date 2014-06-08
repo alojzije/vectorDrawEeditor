@@ -1,6 +1,8 @@
 package hr.zemris.ooup.lab4;
 
 import hr.zemris.ooup.lab4.model.GraphicalObject;
+import hr.zemris.ooup.lab4.model.GraphicalObjectFactory;
+import hr.zemris.ooup.lab4.model.LineSegment;
 import hr.zemris.ooup.lab4.model.Oval;
 import hr.zemris.ooup.lab4.state.AddShapeState;
 import hr.zemris.ooup.lab4.state.IdleState;
@@ -10,10 +12,7 @@ import hr.zemris.ooup.lab4.util.Point;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,8 +58,11 @@ public class GUI extends JFrame {
     }
 
     private void addToolbar() {
+        ButtonListener lForClick = new ButtonListener();
         buttons.add(new JButton("line"));
+        buttons.get(0).addActionListener(lForClick);
         buttons.add(new JButton("oval"));
+        buttons.get(1).addActionListener(lForClick);
         for (JButton b : buttons) {
             toolbar.add(b);
         }
@@ -85,42 +87,23 @@ public class GUI extends JFrame {
 
     private class ListenForMouse implements MouseListener {
         @Override
-        public void mouseClicked(MouseEvent e) {
-
-        }
-
-        @Override
         public void mousePressed(MouseEvent e) {
-
-            GraphicalObject obj = new Oval(new Point(i++, i++), new Point(i++ +10, i++ -10));
-            currentState = new AddShapeState(docModel, obj);
             currentState.mouseDown(new Point(e.getX(), e.getY()), false, false);
-
-            System.out.println("addShapeState obj nb " + docModel.list().size());
-
-        rePaint();
-
-
+            //System.out.println("addShapeState obj nb " + docModel.list().size());
+            rePaint();
         }
 
         @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
+        public void mouseClicked(MouseEvent e) {}
         @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
+        public void mouseReleased(MouseEvent e) {}
         @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
+        public void mouseEntered(MouseEvent e) {}
+        @Override
+        public void mouseExited(MouseEvent e) {}
     }
 
     private class MyDispatcher implements KeyEventDispatcher {
-
         @Override
         public boolean dispatchKeyEvent(KeyEvent e) {
             if(e.getID() == KeyEvent.KEY_PRESSED) {
@@ -133,5 +116,15 @@ public class GUI extends JFrame {
             return false;
         }
     }
+
+    private class ButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String type = ((JButton) e.getSource()).getText();
+            GraphicalObject obj = GraphicalObjectFactory.getGraphicalObject(type);
+            currentState = new AddShapeState(docModel, obj);
+        }
+    }
+
 
 }
