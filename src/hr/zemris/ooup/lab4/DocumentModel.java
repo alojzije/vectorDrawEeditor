@@ -162,5 +162,13 @@ public class DocumentModel {
         return hpIndex;
     }
 
+    public void translateSelected(Point delta) {
+        for (Object o : getSelectedObjects()) {
+            GraphicalObject obj = (GraphicalObject) o;
+            obj.translate(delta);
+        }
+
+    }
+
 
 }

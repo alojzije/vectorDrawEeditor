@@ -8,7 +8,7 @@ import hr.zemris.ooup.lab4.state.AddShapeState;
 import hr.zemris.ooup.lab4.state.IdleState;
 import hr.zemris.ooup.lab4.state.SelectShapeState;
 import hr.zemris.ooup.lab4.state.State;
-import hr.zemris.ooup.lab4.util.myGraphic;
+import hr.zemris.ooup.lab4.util.*;
 import hr.zemris.ooup.lab4.util.Point;
 
 import javax.swing.*;
@@ -55,6 +55,7 @@ public class GUI extends JFrame {
         canvas.paintComponent(myGraphic);
         ListenForMouse lForMouse = new ListenForMouse();
         canvas.addMouseListener(lForMouse);
+
         this.add(canvas, BorderLayout.CENTER);
 
 
@@ -69,7 +70,6 @@ public class GUI extends JFrame {
             b.addActionListener(lForToolbar);
             toolbar.add(b);
         }
-
         this.add(toolbar, BorderLayout.NORTH);
 
     }
@@ -114,9 +114,26 @@ public class GUI extends JFrame {
                     System.out.println("idleState");
                     rePaint();
                 }
+                else if ( e.getKeyCode() == KeyEvent.VK_UP) {
+                    docModel.translateSelected(new Point(0, -1));
+                    rePaint();
+                }
+                else if ( e.getKeyCode() == KeyEvent.VK_DOWN) {
+                    docModel.translateSelected(new Point(0, 1));
+                    rePaint();
+                }
+                else if ( e.getKeyCode() == KeyEvent.VK_LEFT) {
+                    docModel.translateSelected(new Point(-1, 0));
+                    rePaint();
+                }
+                else if ( e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                    docModel.translateSelected(new Point(1, 0));
+                    rePaint();
+                }
             }
             return false;
         }
+
     }
 
     private class ToolbarListener implements ActionListener {
