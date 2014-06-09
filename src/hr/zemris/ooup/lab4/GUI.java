@@ -130,6 +130,16 @@ public class GUI extends JFrame {
                     docModel.translateSelected(new Point(1, 0));
                     rePaint();
                 }
+                else if ( e.getKeyCode() == KeyEvent.VK_PLUS) {
+                    if(docModel.getSelectedObjects().size()==1)
+                        docModel.increaseZ((GraphicalObject)docModel.getSelectedObjects().get(0));
+                    rePaint();
+                }
+                else if ( e.getKeyCode() == KeyEvent.VK_MINUS) {
+                    if(docModel.getSelectedObjects().size()==1)
+                        docModel.decreaseZ((GraphicalObject)docModel.getSelectedObjects().get(0));
+                    rePaint();
+                }
             }
             return false;
         }

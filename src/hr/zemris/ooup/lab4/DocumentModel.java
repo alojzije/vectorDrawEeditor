@@ -110,8 +110,10 @@ public class DocumentModel {
     public void increaseZ(GraphicalObject go) {
         if (objects.contains(go)) {
             int index = objects.indexOf(go);
-            objects.remove(go);
-            objects.add(index+1, go);
+            if (index < objects.size()-1) {
+                objects.remove(go);
+                objects.add(index + 1, go);
+            }
         }
     }
 
@@ -119,8 +121,10 @@ public class DocumentModel {
     public void decreaseZ(GraphicalObject go) {
         if (objects.contains(go)) {
             int index = objects.indexOf(go);
-            objects.remove(go);
-            objects.add(index-1, go);
+            if (index > 0) {
+                objects.remove(go);
+                objects.add(index-1, go);
+            }
         }
     }
 
