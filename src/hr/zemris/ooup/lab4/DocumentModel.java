@@ -160,6 +160,7 @@ public class DocumentModel {
             currDist = object.getHotPointDistance(i, mousePoint);
             if (currDist <= minDist) {
                 minDist = currDist;
+                System.out.println(currDist);
                 hpIndex = i;
             }
         }

@@ -55,7 +55,8 @@ public class GUI extends JFrame {
         canvas.paintComponent(myGraphic);
         ListenForMouse lForMouse = new ListenForMouse();
         canvas.addMouseListener(lForMouse);
-
+        ListenForMouseMotion lForMouseMotion = new ListenForMouseMotion();
+        canvas.addMouseMotionListener(lForMouseMotion);
         this.add(canvas, BorderLayout.CENTER);
 
 
@@ -94,7 +95,6 @@ public class GUI extends JFrame {
             currentState.mouseDown(new Point(e.getX(), e.getY()), e.isShiftDown(), e.isControlDown());
             rePaint();
         }
-
         @Override
         public void mouseClicked(MouseEvent e) {}
         @Override
@@ -105,6 +105,17 @@ public class GUI extends JFrame {
         public void mouseExited(MouseEvent e) {}
     }
 
+    private class ListenForMouseMotion implements MouseMotionListener {
+
+        @Override
+        public void mouseDragged(MouseEvent e) {
+            currentState.mouseDragged(new Point(e.getX(), e.getY()));
+
+            rePaint();
+        }
+        @Override
+        public void mouseMoved(MouseEvent e) {}
+    }
     private class MyDispatcher implements KeyEventDispatcher {
         @Override
         public boolean dispatchKeyEvent(KeyEvent e) {
@@ -113,31 +124,8 @@ public class GUI extends JFrame {
                     currentState = new IdleState();
                     System.out.println("idleState");
                     rePaint();
-                }
-                else if ( e.getKeyCode() == KeyEvent.VK_UP) {
-                    docModel.translateSelected(new Point(0, -1));
-                    rePaint();
-                }
-                else if ( e.getKeyCode() == KeyEvent.VK_DOWN) {
-                    docModel.translateSelected(new Point(0, 1));
-                    rePaint();
-                }
-                else if ( e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    docModel.translateSelected(new Point(-1, 0));
-                    rePaint();
-                }
-                else if ( e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    docModel.translateSelected(new Point(1, 0));
-                    rePaint();
-                }
-                else if ( e.getKeyCode() == KeyEvent.VK_PLUS) {
-                    if(docModel.getSelectedObjects().size()==1)
-                        docModel.increaseZ((GraphicalObject)docModel.getSelectedObjects().get(0));
-                    rePaint();
-                }
-                else if ( e.getKeyCode() == KeyEvent.VK_MINUS) {
-                    if(docModel.getSelectedObjects().size()==1)
-                        docModel.decreaseZ((GraphicalObject)docModel.getSelectedObjects().get(0));
+                }else {
+                    currentState.keyPressed(e.getKeyCode());
                     rePaint();
                 }
             }

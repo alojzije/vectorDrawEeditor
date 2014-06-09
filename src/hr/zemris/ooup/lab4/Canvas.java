@@ -34,12 +34,8 @@ public class Canvas extends JPanel {
             for (int i = 0; i < obj.getNumberOfHotPoints(); i++) {
                 Point hp = obj.getHotPoint(i);
                 g.drawRect(hp.getX()-2, hp.getY()-2,4,4);
-
             }
-
-
         }
-
 
         for (Object o : docModel.getSelectedObjects()) {
             Rectangle rect = ((GraphicalObject) o).getBoundingBox();

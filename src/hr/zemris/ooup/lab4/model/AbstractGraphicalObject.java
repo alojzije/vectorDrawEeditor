@@ -1,6 +1,7 @@
 package hr.zemris.ooup.lab4.model;
 
 import hr.zemris.ooup.lab4.GraphicalObjectListener;
+import hr.zemris.ooup.lab4.util.GeometryUtil;
 import hr.zemris.ooup.lab4.util.Point;
 
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public abstract class AbstractGraphicalObject implements GraphicalObject{
 
     @Override
     public double getHotPointDistance(int index, Point mousePoint) {
-        return 0;
+        return GeometryUtil.distanceFromPoint(getHotPoint(index), mousePoint);
     }
 
     @Override

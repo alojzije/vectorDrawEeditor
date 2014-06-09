@@ -40,7 +40,7 @@ public class Oval extends AbstractGraphicalObject {
     public Rectangle getBoundingBox() {
         Point b = this.getHotPoint(0); //bottom
         Point r = this.getHotPoint(1); //right
-
+        center = new Point(b.getX(),r.getY());
         int rY = (int) (GeometryUtil.distanceFromPoint(center, b));
         int rX = (int) (GeometryUtil.distanceFromPoint(center, r));
         int x = center.getX() - rX;
@@ -53,6 +53,7 @@ public class Oval extends AbstractGraphicalObject {
     public double selectionDistance(Point mousePoint) {
         Point b = this.getHotPoint(0); //bottom
         Point r = this.getHotPoint(1); //right
+        center = new Point(b.getX(),r.getY());
         int rx = (int) (GeometryUtil.distanceFromPoint(center, r));
         int ry = (int) (GeometryUtil.distanceFromPoint(center, b));
         double distX = GeometryUtil.distanceFromPoint(center, new Point(mousePoint.getX(), center.getY()));

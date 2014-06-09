@@ -47,8 +47,8 @@ public class LineSegment extends AbstractGraphicalObject {
     public Rectangle getBoundingBox() {
         Point s = this.getHotPoint(0);
         Point e = this.getHotPoint(1);
-        int x = s.getX();
-        int y = s.getY() < e.getY( )? s.getY() : e.getY();
+        int x = s.getX() < e.getX()? s.getX() : e.getX();
+        int y = s.getY() < e.getY()? s.getY() : e.getY();
         int width  = abs(e.getX() - s.getX());
         int height = abs(e.getY() - s.getY());
 

@@ -14,7 +14,25 @@ public class GeometryUtil {
         return sqrt(pow((p1.getX() - p2.getX()),2) + pow((p1.getY() - p2.getY()),2));
     }
 
-    public static double distanceFromLineSegment(Point s, Point e, Point p) {
+    public static double distanceFromLineSegment(Point start, Point end, Point p) {
+        Point s,e;
+        if (start.getX() == end.getX()) {
+            if (start.getY() < end.getY()) {
+                s = start;
+                e = end;
+            } else {
+                s = end;
+                e = start;
+            }
+        } else {
+            if (start.getX() < end.getX()) {
+                s = start;
+                e = end;
+            } else {
+                s = end;
+                e = start;
+            }
+        }
         if (p.getX() < s.getX())            // tocka p prije pocetne tocke s
             return GeometryUtil.distanceFromPoint(s, p);
         else if (p.getX()> e.getX())        // tocka p iza konacne pocke e
