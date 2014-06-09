@@ -41,8 +41,8 @@ public class Oval extends AbstractGraphicalObject {
         Point b = this.getHotPoint(0); //bottom
         Point r = this.getHotPoint(1); //right
 
-        int rX = (int) (GeometryUtil.distanceFromPoint(center, b));
-        int rY = (int) (GeometryUtil.distanceFromPoint(center, r));
+        int rY = (int) (GeometryUtil.distanceFromPoint(center, b));
+        int rX = (int) (GeometryUtil.distanceFromPoint(center, r));
         int x = center.getX() - rX;
         int y = center.getY() - rY;
 
@@ -53,8 +53,8 @@ public class Oval extends AbstractGraphicalObject {
     public double selectionDistance(Point mousePoint) {
         Point b = this.getHotPoint(0); //bottom
         Point r = this.getHotPoint(1); //right
-        int rx = (int) (GeometryUtil.distanceFromPoint(center, b));
-        int ry = (int) (GeometryUtil.distanceFromPoint(center, r));
+        int rx = (int) (GeometryUtil.distanceFromPoint(center, r));
+        int ry = (int) (GeometryUtil.distanceFromPoint(center, b));
         double distX = GeometryUtil.distanceFromPoint(center, new Point(mousePoint.getX(), center.getY()));
         double distY = GeometryUtil.distanceFromPoint(center, new Point(center.getX(), mousePoint.getY()));
         double dist = GeometryUtil.distanceFromPoint(center, mousePoint);

@@ -2,6 +2,8 @@ package hr.zemris.ooup.lab4;
 
 import hr.zemris.ooup.lab4.model.GraphicalObject;
 import hr.zemris.ooup.lab4.util.*;
+import hr.zemris.ooup.lab4.util.Point;
+import hr.zemris.ooup.lab4.util.Rectangle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,10 +26,23 @@ public class Canvas extends JPanel {
         for(Object o: docModel.list())
             ((GraphicalObject)o).render(r);
 
-        for (Object o : docModel.getSelectedObjects()) {
-            hr.zemris.ooup.lab4.util.Rectangle rect = ((GraphicalObject) o).getBoundingBox();
 
-            g.setColor(Color.blue);
+        // selected objects
+        g.setColor(Color.blue);
+        if (docModel.getSelectedObjects().size() == 1) {
+            GraphicalObject obj = (GraphicalObject)docModel.getSelectedObjects().get(0);
+            for (int i = 0; i < obj.getNumberOfHotPoints(); i++) {
+                Point hp = obj.getHotPoint(i);
+                g.drawRect(hp.getX()-2, hp.getY()-2,4,4);
+
+            }
+
+
+        }
+
+
+        for (Object o : docModel.getSelectedObjects()) {
+            Rectangle rect = ((GraphicalObject) o).getBoundingBox();
             g.drawRect(rect.getX(), rect.getY(), rect.getWidth(),rect.getHeight());
         }
 

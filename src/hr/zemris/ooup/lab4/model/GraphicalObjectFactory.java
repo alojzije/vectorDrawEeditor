@@ -7,7 +7,7 @@ import hr.zemris.ooup.lab4.util.Point;
  */
 public class GraphicalObjectFactory {
     public static GraphicalObject getGraphicalObject(String type) {
-        if(type == "line") return new LineSegment(new Point(0, 20), new Point(40,0));
-        else               return new Oval(new Point(0, 10), new Point(10,0));
+        if(type == "line") return new LineSegment(new Point(0, 20), new Point(30,0));
+        else               return new Oval(new Point(0, 15), new Point(10,0));
     }
 }
