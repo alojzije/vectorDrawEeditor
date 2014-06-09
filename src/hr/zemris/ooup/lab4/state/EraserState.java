@@ -4,16 +4,13 @@ import hr.zemris.ooup.lab4.Canvas;
 import hr.zemris.ooup.lab4.DocumentModel;
 import hr.zemris.ooup.lab4.GUI;
 import hr.zemris.ooup.lab4.Renderer;
-import hr.zemris.ooup.lab4.model.CompositeShape;
 import hr.zemris.ooup.lab4.model.GraphicalObject;
 import hr.zemris.ooup.lab4.util.Point;
 
-import javax.swing.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by alojzije on 9.6.2014..
+ * Created by alojzije on 10.6.2014..
  */
 public class EraserState implements State {
     GUI gui;
@@ -24,7 +21,6 @@ public class EraserState implements State {
         this.gui = gui;
         this.canvas = canvas;
         this.model = docModel;
-
     }
 
     @Override
@@ -35,19 +31,18 @@ public class EraserState implements State {
     @Override
     public void mouseUp(Point mousePoint, boolean shiftDown, boolean ctrlDown) {
         List selected = model.getSelectedObjects();
-        for (int i = selected.size() - 1; i >= 0; i--) {
+        for (int i = selected.size() - 1; i >= 0; i--)
             model.removeGraphicalObject((GraphicalObject) selected.get(i));
-
         gui.repaint();
     }
 
     @Override
     public void mouseDragged(Point mousePoint) {
-        canvas.getGraphics().drawOval(mousePoint.getX(), mousePoint.getY() , 1, 1);
+        canvas.getGraphics().drawOval(mousePoint.getX(), mousePoint.getY(), 1, 1);
         GraphicalObject selected = model.findSelectedGraphicalObject(mousePoint);
-        if (selected != null) {
+        if (selected != null)
             selected.setSelected(true);
-        }
+
     }
 
     @Override
