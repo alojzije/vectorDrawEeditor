@@ -16,7 +16,6 @@ public class Canvas extends JPanel {
 
     public Canvas(DocumentModel docModel) {
         this.docModel = docModel;
-
     }
 
     @Override

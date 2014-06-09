@@ -1,6 +1,7 @@
 package hr.zemris.ooup.lab4.state;
 
 import hr.zemris.ooup.lab4.DocumentModel;
+import hr.zemris.ooup.lab4.GUI;
 import hr.zemris.ooup.lab4.Renderer;
 import hr.zemris.ooup.lab4.model.CompositeShape;
 import hr.zemris.ooup.lab4.model.GraphicalObject;
@@ -20,11 +21,13 @@ public class SelectShapeState implements State{
     DocumentModel model;
     Renderer r;
     List objects = new ArrayList();
+    GUI gui;
 
-    public SelectShapeState(DocumentModel model, List objects, Renderer r) {
+    public SelectShapeState(DocumentModel model, List objects, Renderer r, GUI gui) {
         this.model = model;
         this.objects = objects;
         this.r = r;
+        this.gui = gui;
     }
 
     @Override
@@ -39,7 +42,7 @@ public class SelectShapeState implements State{
         GraphicalObject obj = model.findSelectedGraphicalObject(mousePoint);
         if (obj != null) obj.setSelected(true);
 
-
+        gui.repaint();
         afterDraw(r);
 
     }
@@ -60,6 +63,7 @@ public class SelectShapeState implements State{
                 obj.setHotPoint(hpIndex, mousePoint);
             }
         }
+        gui.repaint();
 
     }
 
@@ -107,7 +111,7 @@ public class SelectShapeState implements State{
 
         }
 
-
+        gui.repaint();
 
     }
 
@@ -118,7 +122,6 @@ public class SelectShapeState implements State{
 
     @Override
     public void afterDraw(Renderer r) {
-
 
     }
 

@@ -4,10 +4,7 @@ import hr.zemris.ooup.lab4.model.GraphicalObject;
 import hr.zemris.ooup.lab4.model.GraphicalObjectFactory;
 import hr.zemris.ooup.lab4.model.LineSegment;
 import hr.zemris.ooup.lab4.model.Oval;
-import hr.zemris.ooup.lab4.state.AddShapeState;
-import hr.zemris.ooup.lab4.state.IdleState;
-import hr.zemris.ooup.lab4.state.SelectShapeState;
-import hr.zemris.ooup.lab4.state.State;
+import hr.zemris.ooup.lab4.state.*;
 import hr.zemris.ooup.lab4.util.*;
 import hr.zemris.ooup.lab4.util.Point;
 
@@ -67,6 +64,7 @@ public class GUI extends JFrame {
         buttons.add(new JButton("line"));
         buttons.add(new JButton("oval"));
         buttons.add(new JButton("selektiraj"));
+        buttons.add(new JButton("brisi"));
         for (JButton b : buttons) {
             b.addActionListener(lForToolbar);
             toolbar.add(b);
@@ -93,12 +91,14 @@ public class GUI extends JFrame {
         @Override
         public void mousePressed(MouseEvent e) {
             currentState.mouseDown(new Point(e.getX(), e.getY()), e.isShiftDown(), e.isControlDown());
-            rePaint();
+            //rePaint();
         }
         @Override
         public void mouseClicked(MouseEvent e) {}
         @Override
-        public void mouseReleased(MouseEvent e) {}
+        public void mouseReleased(MouseEvent e) {
+            currentState.mouseUp(new Point(e.getX(), e.getY()), e.isShiftDown(), e.isControlDown());
+        }
         @Override
         public void mouseEntered(MouseEvent e) {}
         @Override
@@ -111,7 +111,7 @@ public class GUI extends JFrame {
         public void mouseDragged(MouseEvent e) {
             currentState.mouseDragged(new Point(e.getX(), e.getY()));
 
-            rePaint();
+            //rePaint();
         }
         @Override
         public void mouseMoved(MouseEvent e) {}
@@ -123,10 +123,10 @@ public class GUI extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     currentState = new IdleState();
                     System.out.println("idleState");
-                    rePaint();
+                    //rePaint();
                 }else {
                     currentState.keyPressed(e.getKeyCode());
-                    rePaint();
+                    //rePaint();
                 }
             }
             return false;
@@ -141,13 +141,16 @@ public class GUI extends JFrame {
             if (buttonType == "line") {
                 GraphicalObject obj = GraphicalObjectFactory.getGraphicalObject(buttonType);
                 objects.add(obj);
-                currentState = new AddShapeState(docModel, obj);
+                currentState = new AddShapeState(docModel, obj, GUI.this);
             }else if (buttonType == "oval") {
                 GraphicalObject obj = GraphicalObjectFactory.getGraphicalObject(buttonType);
                 objects.add(obj);
-                currentState = new AddShapeState(docModel, obj);
+                currentState = new AddShapeState(docModel, obj, GUI.this);
             }else if (buttonType == "selektiraj") {
-                currentState = new SelectShapeState(docModel, objects, r);
+                currentState = new SelectShapeState(docModel, objects, r,  GUI.this);
+            }else if (buttonType == "brisi") {
+                currentState = new EraserState(docModel, GUI.this, canvas);
+
             }
 
         }

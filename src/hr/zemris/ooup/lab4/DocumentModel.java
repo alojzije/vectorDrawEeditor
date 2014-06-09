@@ -36,9 +36,9 @@ public class DocumentModel {
 
         @Override
         public void graphicalObjectSelectionChanged(GraphicalObject go) {
-            if ( go.isSelected()) {
+            if ( go.isSelected() && !selectedObjects.contains(go)) {
                 selectedObjects.add(go);
-            }else if (selectedObjects.contains(go))
+            }else if (!go.isSelected() && selectedObjects.contains(go))
                 selectedObjects.remove(go);
 
             for (Object l : listeners) {
@@ -70,7 +70,7 @@ public class DocumentModel {
     public void removeGraphicalObject(GraphicalObject obj) {
         if (objects.contains(obj)) {
             objects.remove(obj);
-            if (obj.isSelected())
+            if (obj.isSelected() && selectedObjects.contains(obj))
                 selectedObjects.remove(obj);
             obj.removeGraphicalObjectListener(goListener);
         }

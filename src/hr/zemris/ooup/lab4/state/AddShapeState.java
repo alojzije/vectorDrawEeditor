@@ -1,6 +1,7 @@
 package hr.zemris.ooup.lab4.state;
 
 import hr.zemris.ooup.lab4.DocumentModel;
+import hr.zemris.ooup.lab4.GUI;
 import hr.zemris.ooup.lab4.Renderer;
 import hr.zemris.ooup.lab4.model.GraphicalObject;
 import hr.zemris.ooup.lab4.model.Oval;
@@ -14,11 +15,12 @@ import java.awt.event.KeyEvent;
 public class AddShapeState implements State {
     private GraphicalObject protoype;
     private DocumentModel model;
-    private static int i = 200;
+    private GUI gui;
 
-    public AddShapeState(DocumentModel model, GraphicalObject protoype) {
+    public AddShapeState(DocumentModel model, GraphicalObject protoype, GUI gui) {
         this.model = model;
         this.protoype = protoype;
+        this.gui = gui;
     }
 
     @Override
@@ -26,6 +28,8 @@ public class AddShapeState implements State {
         GraphicalObject obj = protoype.duplicate();
         obj.translate(mousePoint);
         model.addGraphicalObject(obj);
+        gui.repaint();
+
     }
 
     @Override
@@ -51,6 +55,7 @@ public class AddShapeState implements State {
 
     @Override
     public void afterDraw(Renderer renderer) {
+
 
     }
 
