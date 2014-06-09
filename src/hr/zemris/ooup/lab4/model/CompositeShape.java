@@ -66,6 +66,7 @@ public class CompositeShape implements GraphicalObject {
     public void translate(Point delta) {
         for (GraphicalObject o : objects)
             o.translate(delta);
+        notifyListeners();
     }
     // Vrati nepromjenjivu listu postojecih objekata (izmjene smiju ici samo kroz metode modela)
     public List list() {

@@ -4,6 +4,8 @@ import hr.zemris.ooup.lab4.Renderer;
 import hr.zemris.ooup.lab4.model.GraphicalObject;
 import hr.zemris.ooup.lab4.util.Point;
 
+import java.awt.*;
+
 /**
  * Created by alojzije on 8.6.2014..
  */
@@ -20,7 +22,7 @@ public interface State {
     void afterDraw(Renderer r, GraphicalObject graphicalObject);
 
     //poziva se nakon sto je platno nacrtalo citav crtez
-    void afterDraw(Renderer renderer);
+    void afterDraw(Renderer renderer, Graphics graphics);
 
     //poziva se kada program napusta ovo stanje kako bi preslo u drugo
     void onLeaving();

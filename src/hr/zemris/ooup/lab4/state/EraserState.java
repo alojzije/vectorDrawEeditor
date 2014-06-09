@@ -7,6 +7,7 @@ import hr.zemris.ooup.lab4.Renderer;
 import hr.zemris.ooup.lab4.model.GraphicalObject;
 import hr.zemris.ooup.lab4.util.Point;
 
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -56,7 +57,7 @@ public class EraserState implements State {
     }
 
     @Override
-    public void afterDraw(Renderer renderer) {
+    public void afterDraw(Renderer renderer, Graphics graphics) {
 
     }
 

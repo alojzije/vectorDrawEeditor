@@ -1,13 +1,11 @@
 package hr.zemris.ooup.lab4.state;
 
 import hr.zemris.ooup.lab4.DocumentModel;
-import hr.zemris.ooup.lab4.GUI;
 import hr.zemris.ooup.lab4.Renderer;
 import hr.zemris.ooup.lab4.model.GraphicalObject;
-import hr.zemris.ooup.lab4.model.Oval;
 import hr.zemris.ooup.lab4.util.Point;
 
-import java.awt.event.KeyEvent;
+import java.awt.*;
 
 /**
  * Created by alojzije on 8.6.2014..
@@ -53,7 +51,7 @@ public class AddShapeState implements State {
     }
 
     @Override
-    public void afterDraw(Renderer renderer) {
+    public void afterDraw(Renderer renderer, Graphics graphics) {
 
 
     }

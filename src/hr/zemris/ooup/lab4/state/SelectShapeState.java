@@ -1,13 +1,10 @@
 package hr.zemris.ooup.lab4.state;
 
 import hr.zemris.ooup.lab4.DocumentModel;
-import hr.zemris.ooup.lab4.GUI;
 import hr.zemris.ooup.lab4.Renderer;
 import hr.zemris.ooup.lab4.model.CompositeShape;
 import hr.zemris.ooup.lab4.model.GraphicalObject;
 import hr.zemris.ooup.lab4.util.Point;
-import hr.zemris.ooup.lab4.util.Rectangle;
-import hr.zemris.ooup.lab4.util.myGraphic;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -41,8 +38,6 @@ public class SelectShapeState implements State{
         GraphicalObject obj = model.findSelectedGraphicalObject(mousePoint);
         if (obj != null) obj.setSelected(true);
 
-
-        afterDraw(r);
 
     }
 
@@ -118,12 +113,16 @@ public class SelectShapeState implements State{
     }
 
     @Override
-    public void afterDraw(Renderer r) {
+    public void afterDraw(Renderer r, Graphics graphics) {
 
     }
 
     @Override
     public void onLeaving() {
+        List selected = model.getSelectedObjects();
+        for (int i = selected.size()-1; i >= 0; i--) {
+            ((GraphicalObject) selected.get(i)).setSelected(false);
+        }
 
     }
 }

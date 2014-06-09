@@ -18,26 +18,25 @@ import java.util.List;
  * Created by alojzije on 8.6.2014..
  */
 public class GUI extends JFrame implements DocumentModelListener {
-    int i = 100;
-    List objects;
-    JToolBar toolbar;
-    ToolbarListener lForToolbar;
-    Canvas canvas;
-    DocumentModel docModel;
-    private State currentState;
-    Renderer r = new G2DRendererImpl(new myGraphic());
+    private State currentState = new IdleState();
+
+    DocumentModel docModel = new DocumentModel();
+    Canvas canvas          = new Canvas(docModel);
+
+    JToolBar toolbar            = new JToolBar();
+    ArrayList<JButton> buttons  = new ArrayList<JButton>();
+    ToolbarListener lForToolbar = new ToolbarListener();
+
+
     Graphics2D myGraphic = new myGraphic();
-    ArrayList<JButton> buttons = new ArrayList<JButton>();
+    Renderer r           = new G2DRendererImpl(myGraphic);
+
+    List objects;
 
     public GUI(List objects) {
         this.objects = objects;
-        docModel = new DocumentModel();
         docModel.addDocumentModelListener(GUI.this);
         addObjectsToDoc();
-        toolbar = new JToolBar();
-        canvas = new Canvas(docModel);
-        currentState = new IdleState();
-        lForToolbar = new ToolbarListener();
         initializeFrame();
         addToolbar();
         addCanvas();
@@ -88,13 +87,14 @@ public class GUI extends JFrame implements DocumentModelListener {
     @Override
     public void documentChange() {
         this.repaint();
+
+        currentState.afterDraw(r, canvas.getGraphics());
     }
 
     private class ListenForMouse implements MouseListener {
         @Override
         public void mousePressed(MouseEvent e) {
             currentState.mouseDown(new Point(e.getX(), e.getY()), e.isShiftDown(), e.isControlDown());
-            //rePaint();
         }
         @Override
         public void mouseClicked(MouseEvent e) {}
@@ -113,8 +113,6 @@ public class GUI extends JFrame implements DocumentModelListener {
         @Override
         public void mouseDragged(MouseEvent e) {
             currentState.mouseDragged(new Point(e.getX(), e.getY()));
-
-            //rePaint();
         }
         @Override
         public void mouseMoved(MouseEvent e) {}
@@ -124,12 +122,11 @@ public class GUI extends JFrame implements DocumentModelListener {
         public boolean dispatchKeyEvent(KeyEvent e) {
             if(e.getID() == KeyEvent.KEY_PRESSED) {
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    currentState.onLeaving();
                     currentState = new IdleState();
                     System.out.println("idleState");
-                    //rePaint();
                 }else {
                     currentState.keyPressed(e.getKeyCode());
-                    //rePaint();
                 }
             }
             return false;
@@ -142,16 +139,20 @@ public class GUI extends JFrame implements DocumentModelListener {
         public void actionPerformed(ActionEvent e) {
             String buttonType = ((JButton) e.getSource()).getText();
             if (buttonType == "line") {
+                currentState.onLeaving();
                 GraphicalObject obj = GraphicalObjectFactory.getGraphicalObject(buttonType);
                 objects.add(obj);
                 currentState = new AddShapeState(docModel, obj);
             }else if (buttonType == "oval") {
+                currentState.onLeaving();
                 GraphicalObject obj = GraphicalObjectFactory.getGraphicalObject(buttonType);
                 objects.add(obj);
                 currentState = new AddShapeState(docModel, obj);
             }else if (buttonType == "selektiraj") {
+                currentState.onLeaving();
                 currentState = new SelectShapeState(docModel, objects, r);
             }else if (buttonType == "brisi") {
+                currentState.onLeaving();
                 currentState = new EraserState(docModel, GUI.this, canvas);
 
             }
