@@ -15,6 +15,7 @@ import java.util.List;
 public class testMain {
     public static void main(String[] args) {
         List objects = new ArrayList();
+
         objects.add(new LineSegment(new Point(10,10), new Point(20,30)));
         objects.add(new Oval(new Point (200, 200), new Point (220,150)));
 

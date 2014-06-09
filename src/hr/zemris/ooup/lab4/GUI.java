@@ -6,6 +6,7 @@ import hr.zemris.ooup.lab4.model.LineSegment;
 import hr.zemris.ooup.lab4.model.Oval;
 import hr.zemris.ooup.lab4.state.AddShapeState;
 import hr.zemris.ooup.lab4.state.IdleState;
+import hr.zemris.ooup.lab4.state.SelectShapeState;
 import hr.zemris.ooup.lab4.state.State;
 import hr.zemris.ooup.lab4.util.myGraphic;
 import hr.zemris.ooup.lab4.util.Point;
@@ -23,6 +24,7 @@ public class GUI extends JFrame {
     int i = 100;
     List objects;
     JToolBar toolbar;
+    ToolbarListener lForToolbar;
     Canvas canvas;
     DocumentModel docModel;
     private State currentState;
@@ -37,6 +39,7 @@ public class GUI extends JFrame {
         toolbar = new JToolBar();
         canvas = new Canvas(docModel);
         currentState = new IdleState();
+        lForToolbar = new ToolbarListener();
         initializeFrame();
         addToolbar();
         addCanvas();
@@ -58,12 +61,12 @@ public class GUI extends JFrame {
     }
 
     private void addToolbar() {
-        ButtonListener lForClick = new ButtonListener();
+
         buttons.add(new JButton("line"));
-        buttons.get(0).addActionListener(lForClick);
         buttons.add(new JButton("oval"));
-        buttons.get(1).addActionListener(lForClick);
+        buttons.add(new JButton("selektiraj"));
         for (JButton b : buttons) {
+            b.addActionListener(lForToolbar);
             toolbar.add(b);
         }
 
@@ -88,8 +91,7 @@ public class GUI extends JFrame {
     private class ListenForMouse implements MouseListener {
         @Override
         public void mousePressed(MouseEvent e) {
-            currentState.mouseDown(new Point(e.getX(), e.getY()), false, false);
-            //System.out.println("addShapeState obj nb " + docModel.list().size());
+            currentState.mouseDown(new Point(e.getX(), e.getY()), e.isShiftDown(), e.isControlDown());
             rePaint();
         }
 
@@ -117,12 +119,22 @@ public class GUI extends JFrame {
         }
     }
 
-    private class ButtonListener implements ActionListener {
+    private class ToolbarListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            String type = ((JButton) e.getSource()).getText();
-            GraphicalObject obj = GraphicalObjectFactory.getGraphicalObject(type);
-            currentState = new AddShapeState(docModel, obj);
+            String buttonType = ((JButton) e.getSource()).getText();
+            if (buttonType == "line") {
+                GraphicalObject obj = GraphicalObjectFactory.getGraphicalObject(buttonType);
+                objects.add(obj);
+                currentState = new AddShapeState(docModel, obj);
+            }else if (buttonType == "oval") {
+                GraphicalObject obj = GraphicalObjectFactory.getGraphicalObject(buttonType);
+                objects.add(obj);
+                currentState = new AddShapeState(docModel, obj);
+            }else if (buttonType == "selektiraj") {
+                currentState = new SelectShapeState(docModel, objects, r);
+            }
+
         }
     }
 

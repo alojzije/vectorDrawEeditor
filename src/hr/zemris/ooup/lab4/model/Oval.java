@@ -40,24 +40,35 @@ public class Oval extends AbstractGraphicalObject {
     public Rectangle getBoundingBox() {
         Point b = this.getHotPoint(0); //bottom
         Point r = this.getHotPoint(1); //right
-        int x = b.getX() - (r.getX() - b.getX());
-        int y = b.getY();
-        int width = r.getX() - x;
-        int height = abs(r.getY() - y)*2;
 
-        return new Rectangle(x,y, width, height);
+        int rX = (int) (GeometryUtil.distanceFromPoint(center, b));
+        int rY = (int) (GeometryUtil.distanceFromPoint(center, r));
+        int x = center.getX() - rX;
+        int y = center.getY() - rY;
+
+        return new Rectangle(x,y, 2*rX, 2*rY);
     }
 
     @Override
     public double selectionDistance(Point mousePoint) {
-        return GeometryUtil.distanceFromPoint(center, mousePoint);
+        Point b = this.getHotPoint(0); //bottom
+        Point r = this.getHotPoint(1); //right
+        int rx = (int) (GeometryUtil.distanceFromPoint(center, b));
+        int ry = (int) (GeometryUtil.distanceFromPoint(center, r));
+        double distX = GeometryUtil.distanceFromPoint(center, new Point(mousePoint.getX(), center.getY()));
+        double distY = GeometryUtil.distanceFromPoint(center, new Point(center.getX(), mousePoint.getY()));
+        double dist = GeometryUtil.distanceFromPoint(center, mousePoint);
+        if (distX <= rx && distY <=ry)
+            dist *= 0.01;
+
+        return dist;
     }
 
     @Override
     public void render(Renderer r) {
         Rectangle rect = getBoundingBox();
-        int width = rect.getWidth();
-        int height = rect.getHeight();
+        int width = rect.getWidth()/2;
+        int height = rect.getHeight()/2;
 
         ArrayList<Point>points = new ArrayList<Point>();
         for (int t = 0; t<=360; t+=10) {
@@ -80,14 +91,9 @@ public class Oval extends AbstractGraphicalObject {
     }
     @Override
     public void translate(Point delta) {
-        Point curr = getHotPoint(0);
-        int deltaX =  delta.getX() - curr.getX();
-        int deltaY =  delta.getY() - curr.getY();
-        for (int i = 0; i<getNumberOfHotPoints(); i++) {
-            curr = getHotPoint(i);
-            setHotPoint(i, curr.translate(new Point(deltaX, deltaY)));
-        }
-        center = new Point(getHotPoint(0).getX(),getHotPoint(1).getY());
+        center = center.translate(delta);
+        setHotPoint(0, getHotPoint(0).translate(delta));
+        setHotPoint(1, getHotPoint(1).translate(delta));
     }
 
 }

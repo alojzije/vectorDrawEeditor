@@ -52,7 +52,7 @@ public class LineSegment extends AbstractGraphicalObject {
         int width  = abs(e.getX() - s.getX());
         int height = abs(e.getY() - s.getY());
 
-        return new Rectangle(s.getX(), s.getY(), width, height);
+        return new Rectangle(x, y, width, height);
     }
 
     @Override

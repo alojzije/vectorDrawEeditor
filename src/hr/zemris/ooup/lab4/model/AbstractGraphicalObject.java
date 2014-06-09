@@ -29,7 +29,8 @@ public abstract class AbstractGraphicalObject implements GraphicalObject{
 
     @Override
     public void setSelected(boolean selected) {
-        selected = true;
+        this.selected = selected;
+        notifySelectionListeners();
     }
 
     @Override

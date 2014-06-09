@@ -1,6 +1,7 @@
 package hr.zemris.ooup.lab4;
 
 import hr.zemris.ooup.lab4.model.GraphicalObject;
+import hr.zemris.ooup.lab4.util.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,6 +23,14 @@ public class Canvas extends JPanel {
         Renderer r = new G2DRendererImpl(g2d);
         for(Object o: docModel.list())
             ((GraphicalObject)o).render(r);
+
+        for (Object o : docModel.getSelectedObjects()) {
+            hr.zemris.ooup.lab4.util.Rectangle rect = ((GraphicalObject) o).getBoundingBox();
+
+            g.setColor(Color.blue);
+            g.drawRect(rect.getX(), rect.getY(), rect.getWidth(),rect.getHeight());
+        }
+
     }
 
 }

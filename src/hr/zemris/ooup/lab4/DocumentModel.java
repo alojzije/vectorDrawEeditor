@@ -36,8 +36,13 @@ public class DocumentModel {
 
         @Override
         public void graphicalObjectSelectionChanged(GraphicalObject go) {
-            for(Object l: listeners){
-                ((DocumentModelListener)l).documentChange();
+            if ( go.isSelected()) {
+                selectedObjects.add(go);
+            }else if (selectedObjects.contains(go))
+                selectedObjects.remove(go);
+
+            for (Object l : listeners) {
+                ((DocumentModelListener) l).documentChange();
             }
         }
     };
@@ -65,7 +70,8 @@ public class DocumentModel {
     public void removeGraphicalObject(GraphicalObject obj) {
         if (objects.contains(obj)) {
             objects.remove(obj);
-            if (obj.isSelected()) selectedObjects.remove(obj);
+            if (obj.isSelected())
+                selectedObjects.remove(obj);
             obj.removeGraphicalObjectListener(goListener);
         }
     }

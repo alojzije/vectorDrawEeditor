@@ -1,6 +1,8 @@
 package hr.zemris.ooup.lab4;
 
+import hr.zemris.ooup.lab4.util.*;
 import hr.zemris.ooup.lab4.util.Point;
+import hr.zemris.ooup.lab4.util.Rectangle;
 
 import java.awt.*;
 
@@ -29,8 +31,12 @@ public class G2DRendererImpl implements Renderer{
             yPoints[i] = points[i].getY();
         }
         g2d.setColor(Color.blue);
-        g2d.fillPolygon(xPoints,yPoints,points.length);
+        g2d.fillPolygon(xPoints, yPoints, points.length);
         g2d.setColor((Color.red));
         g2d.drawPolyline(xPoints,yPoints,points.length);
     }
+
+
+
+
 }
