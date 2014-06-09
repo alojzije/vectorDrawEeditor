@@ -18,7 +18,7 @@ public class G2DRendererImpl implements Renderer{
     }
     @Override
     public void drawLine(Point s, Point e) {
-        g2d.setColor(Color.yellow);
+        g2d.setColor(Color.red);
         g2d.drawLine(s.getX(), s.getY(), e.getX(), e.getY());
     }
 

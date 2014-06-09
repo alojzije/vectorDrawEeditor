@@ -32,6 +32,7 @@ public class DocumentModel {
             for(Object l: listeners){
                 ((DocumentModelListener)l).documentChange();
             }
+
         }
 
         @Override
@@ -64,6 +65,8 @@ public class DocumentModel {
         objects.add(obj);
         if (obj.isSelected()) selectedObjects.add(obj);
         obj.addGraphicalObjectListener(goListener);
+
+        notifyListeners();
     }
 
     // Uklanjanje objekta iz dokumenta (pazite je li vec selektiran; odregistrirajte model kao promatraca)
@@ -73,6 +76,7 @@ public class DocumentModel {
             if (obj.isSelected() && selectedObjects.contains(obj))
                 selectedObjects.remove(obj);
             obj.removeGraphicalObjectListener(goListener);
+            notifyListeners();
         }
     }
 
@@ -115,6 +119,7 @@ public class DocumentModel {
                 objects.add(index + 1, go);
             }
         }
+        notifyListeners();
     }
 
     // Pomakni predani objekt u listi objekata na jedno mjesto ranije...
@@ -126,6 +131,7 @@ public class DocumentModel {
                 objects.add(index-1, go);
             }
         }
+        notifyListeners();
     }
 
     // Pronadji postoji li u modelu neki objekt koji klik na tocku koja je

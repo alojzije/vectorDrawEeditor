@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by alojzije on 8.6.2014..
  */
-public class GUI extends JFrame {
+public class GUI extends JFrame implements DocumentModelListener {
     int i = 100;
     List objects;
     JToolBar toolbar;
@@ -32,6 +32,7 @@ public class GUI extends JFrame {
     public GUI(List objects) {
         this.objects = objects;
         docModel = new DocumentModel();
+        docModel.addDocumentModelListener(GUI.this);
         addObjectsToDoc();
         toolbar = new JToolBar();
         canvas = new Canvas(docModel);
@@ -83,7 +84,9 @@ public class GUI extends JFrame {
         kfm.addKeyEventDispatcher(new MyDispatcher());
 
     }
-    private void rePaint() {
+
+    @Override
+    public void documentChange() {
         this.repaint();
     }
 
@@ -141,13 +144,13 @@ public class GUI extends JFrame {
             if (buttonType == "line") {
                 GraphicalObject obj = GraphicalObjectFactory.getGraphicalObject(buttonType);
                 objects.add(obj);
-                currentState = new AddShapeState(docModel, obj, GUI.this);
+                currentState = new AddShapeState(docModel, obj);
             }else if (buttonType == "oval") {
                 GraphicalObject obj = GraphicalObjectFactory.getGraphicalObject(buttonType);
                 objects.add(obj);
-                currentState = new AddShapeState(docModel, obj, GUI.this);
+                currentState = new AddShapeState(docModel, obj);
             }else if (buttonType == "selektiraj") {
-                currentState = new SelectShapeState(docModel, objects, r,  GUI.this);
+                currentState = new SelectShapeState(docModel, objects, r);
             }else if (buttonType == "brisi") {
                 currentState = new EraserState(docModel, GUI.this, canvas);
 

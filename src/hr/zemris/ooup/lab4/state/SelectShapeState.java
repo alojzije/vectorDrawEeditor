@@ -21,13 +21,12 @@ public class SelectShapeState implements State{
     DocumentModel model;
     Renderer r;
     List objects = new ArrayList();
-    GUI gui;
 
-    public SelectShapeState(DocumentModel model, List objects, Renderer r, GUI gui) {
+
+    public SelectShapeState(DocumentModel model, List objects, Renderer r) {
         this.model = model;
         this.objects = objects;
         this.r = r;
-        this.gui = gui;
     }
 
     @Override
@@ -42,7 +41,7 @@ public class SelectShapeState implements State{
         GraphicalObject obj = model.findSelectedGraphicalObject(mousePoint);
         if (obj != null) obj.setSelected(true);
 
-        gui.repaint();
+
         afterDraw(r);
 
     }
@@ -63,7 +62,6 @@ public class SelectShapeState implements State{
                 obj.setHotPoint(hpIndex, mousePoint);
             }
         }
-        gui.repaint();
 
     }
 
@@ -111,7 +109,6 @@ public class SelectShapeState implements State{
 
         }
 
-        gui.repaint();
 
     }
 

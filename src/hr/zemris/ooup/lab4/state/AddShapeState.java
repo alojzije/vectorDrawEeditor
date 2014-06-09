@@ -15,12 +15,12 @@ import java.awt.event.KeyEvent;
 public class AddShapeState implements State {
     private GraphicalObject protoype;
     private DocumentModel model;
-    private GUI gui;
 
-    public AddShapeState(DocumentModel model, GraphicalObject protoype, GUI gui) {
+
+    public AddShapeState(DocumentModel model, GraphicalObject protoype) {
         this.model = model;
         this.protoype = protoype;
-        this.gui = gui;
+
     }
 
     @Override
@@ -28,7 +28,6 @@ public class AddShapeState implements State {
         GraphicalObject obj = protoype.duplicate();
         obj.translate(mousePoint);
         model.addGraphicalObject(obj);
-        gui.repaint();
 
     }
 
