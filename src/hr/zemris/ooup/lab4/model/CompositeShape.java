@@ -7,20 +7,34 @@ import hr.zemris.ooup.lab4.util.Point;
 import hr.zemris.ooup.lab4.util.Rectangle;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by alojzije on 9.6.2014..
  */
 public class CompositeShape implements GraphicalObject {
-    ArrayList<AbstractGraphicalObject> objects;
+    ArrayList<GraphicalObject> objects = new ArrayList<GraphicalObject>();
     boolean selected;
+    List<GraphicalObjectListener> listeners;
 
-    public CompositeShape(boolean selected, ArrayList<AbstractGraphicalObject> objects) {
-        this.selected = selected;
+    public CompositeShape(ArrayList<GraphicalObject> objects,boolean selected) {
         this.objects = objects;
+        this.selected = selected;
+        listeners = new ArrayList<GraphicalObjectListener>();
+
     }
 
+    @Override
+    public boolean isSelected() {
+        return selected;
+    }
+
+    @Override
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+        notifySelectionListeners();
+    }
 
     @Override
     public int getNumberOfHotPoints() {
@@ -41,7 +55,7 @@ public class CompositeShape implements GraphicalObject {
     }
 
     @Override
-    public void setHotPointSelected(int index, boolean selected) {    }
+    public void setHotPointSelected(int index, boolean selected) {}
 
     @Override
     public double getHotPointDistance(int index, Point mousePoint) {
@@ -53,30 +67,34 @@ public class CompositeShape implements GraphicalObject {
         for (GraphicalObject o : objects)
             o.translate(delta);
     }
-
+    // Vrati nepromjenjivu listu postojecih objekata (izmjene smiju ici samo kroz metode modela)
+    public List list() {
+        return Collections.unmodifiableList(objects);
+    }
 
     @Override
     public Rectangle getBoundingBox() {
 
-        Rectangle rect = objects.get(0).getBoundingBox()
-        int x = rect.getX();
-        int y = rect.getY();
-        int width = 0;
-        int height = 0;
+        Rectangle rect = objects.get(0).getBoundingBox();
+        int sx = rect.getX();
+        int sy = rect.getY();
+        int ex = rect.getX();
+        int ey = rect.getY();
+
         for (GraphicalObject o : objects) {
             rect = o.getBoundingBox();
-            x = x > rect.getX() ? rect.getX() : x;
-            y = y > rect.getY() ? rect.getY() : y;
-            width += rect.getWidth();
-            height += rect.getHeight();
+            sx = rect.getX() < sx ? rect.getX() : sx;
+            sy = rect.getY() < sy ? rect.getY() : sy;
+            if (rect.getX()+rect.getWidth()  > ex) ex = rect.getX() + rect.getWidth();
+            if (rect.getY()+rect.getHeight() > ey) ey = rect.getY() + rect.getHeight();
         }
 
-        return new Rectangle(x,y, width, height);
+        return new Rectangle(sx,sy, ex-sx, ey-sy);
     }
 
     @Override
     public double selectionDistance(Point mousePoint) {
-        double dist = objects.get(0).selectionDistance(mousePoint)
+        double dist = objects.get(0).selectionDistance(mousePoint);
         for (GraphicalObject o : objects) {
             double tempDist = o.selectionDistance(mousePoint);
             dist = tempDist < dist ? tempDist : dist;
@@ -91,6 +109,17 @@ public class CompositeShape implements GraphicalObject {
     }
 
     @Override
+    public void addGraphicalObjectListener(GraphicalObjectListener l) {
+        listeners.add(l);
+    }
+
+    @Override
+    public void removeGraphicalObjectListener(GraphicalObjectListener l) {
+        if (listeners.contains(l))
+            listeners.remove(l);
+    }
+
+    @Override
     public String getShapeName() {
         return "composite";
     }
@@ -98,6 +127,18 @@ public class CompositeShape implements GraphicalObject {
     @Override
     public GraphicalObject duplicate() {
         return new CompositeShape(this.objects, this.selected);
+    }
+
+    void notifyListeners() {
+        for (GraphicalObjectListener l : listeners) {
+            l.graphicalObjectChanged(this);
+        }
+    }
+
+    void notifySelectionListeners() {
+        for (GraphicalObjectListener l : listeners) {
+            l.graphicalObjectSelectionChanged(this);
+        }
     }
 
 }

@@ -2,6 +2,7 @@ package hr.zemris.ooup.lab4.state;
 
 import hr.zemris.ooup.lab4.DocumentModel;
 import hr.zemris.ooup.lab4.Renderer;
+import hr.zemris.ooup.lab4.model.CompositeShape;
 import hr.zemris.ooup.lab4.model.GraphicalObject;
 import hr.zemris.ooup.lab4.util.Point;
 import hr.zemris.ooup.lab4.util.Rectangle;
@@ -83,7 +84,30 @@ public class SelectShapeState implements State{
         }else if ( keyCode == KeyEvent.VK_MINUS) {
             if(model.getSelectedObjects().size()==1)
                 model.decreaseZ((GraphicalObject)model.getSelectedObjects().get(0));
+        }else if ( keyCode == KeyEvent.VK_G) {
+            ArrayList<GraphicalObject> newSelect = new ArrayList<GraphicalObject>();
+            List selected = model.getSelectedObjects();
+            for (int i = selected.size()-1; i >= 0; i--) {
+                newSelect.add((GraphicalObject) selected.get(i));
+                model.removeGraphicalObject((GraphicalObject) selected.get(i));
+            }
+            model.addGraphicalObject(new CompositeShape(newSelect, true));
+
+        }else if ( keyCode == KeyEvent.VK_U) {
+            if (model.getSelectedObjects().size() == 1 && ((GraphicalObject) model.getSelectedObjects().get(0)).getShapeName() == "composite") {
+                CompositeShape cs = (CompositeShape)model.getSelectedObjects().get(0);
+
+                for (Object o : cs.list()) {
+                    System.out.println(((GraphicalObject) o).getShapeName());
+                    model.addGraphicalObject((GraphicalObject) o);
+                }
+                model.removeGraphicalObject(cs);
+
+            }
+
         }
+
+
 
     }
 
