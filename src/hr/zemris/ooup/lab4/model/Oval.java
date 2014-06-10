@@ -102,9 +102,9 @@ public class Oval extends AbstractGraphicalObject {
     public void load(Stack<GraphicalObject> stack, String data) {
         GraphicalObject o = this.duplicate();
         String[] points = data.split(" ");
-        o.setHotPoint(1, new Point(Integer.parseInt(points[0]), Integer.parseInt(points[1])));
-        o.setHotPoint(0, new Point(Integer.parseInt(points[2]), Integer.parseInt(points[3])));
-        stack.push(o);
+        Point r = new Point(Integer.parseInt(points[0]), Integer.parseInt(points[1]));
+        Point b = new Point(Integer.parseInt(points[2]), Integer.parseInt(points[3]));
+        stack.push(new Oval(b,r));
     }
 
     @Override

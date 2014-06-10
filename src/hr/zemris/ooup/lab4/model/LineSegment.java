@@ -87,9 +87,9 @@ public class LineSegment extends AbstractGraphicalObject {
     public void load(Stack<GraphicalObject> stack, String data) {
         GraphicalObject o = this.duplicate();
         String[] points = data.split(" ");
-        o.setHotPoint(0, new Point(Integer.parseInt(points[0]), Integer.parseInt(points[1])));
-        o.setHotPoint(1, new Point(Integer.parseInt(points[2]), Integer.parseInt(points[3])));
-        stack.push(o);
+        Point s = new Point(Integer.parseInt(points[0]), Integer.parseInt(points[1]));
+        Point e = new Point(Integer.parseInt(points[2]), Integer.parseInt(points[3]));
+        stack.push(new LineSegment(s,e));
     }
 
     @Override

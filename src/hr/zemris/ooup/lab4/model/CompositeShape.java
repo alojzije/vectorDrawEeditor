@@ -141,8 +141,8 @@ public class CompositeShape implements GraphicalObject {
         int childNb = Integer.parseInt(data);
         ArrayList<GraphicalObject> objs = new ArrayList<GraphicalObject>();
         for (int i = 0; i < childNb; i++)
-            this.objects.add(stack.pop());
-        stack.push(this.duplicate());
+            objs.add(stack.pop());
+        stack.push(new CompositeShape(objs, false));
     }
 
     @Override
