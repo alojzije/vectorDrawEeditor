@@ -29,10 +29,7 @@ public class DocumentModel {
     private final GraphicalObjectListener goListener = new GraphicalObjectListener() {
         @Override
         public void graphicalObjectChanged(GraphicalObject go) {
-            for(Object l: listeners){
-                ((DocumentModelListener)l).documentChange();
-            }
-
+            notifyListeners();
         }
 
         @Override
@@ -41,10 +38,7 @@ public class DocumentModel {
                 selectedObjects.add(go);
             }else if (!go.isSelected() && selectedObjects.contains(go))
                 selectedObjects.remove(go);
-
-            for (Object l : listeners) {
-                ((DocumentModelListener) l).documentChange();
-            }
+            notifyListeners();
         }
     };
 
@@ -166,7 +160,6 @@ public class DocumentModel {
             currDist = object.getHotPointDistance(i, mousePoint);
             if (currDist <= minDist) {
                 minDist = currDist;
-                System.out.println(currDist);
                 hpIndex = i;
             }
         }

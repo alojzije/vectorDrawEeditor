@@ -4,7 +4,9 @@ import hr.zemris.ooup.lab4.DocumentModel;
 import hr.zemris.ooup.lab4.Renderer;
 import hr.zemris.ooup.lab4.model.CompositeShape;
 import hr.zemris.ooup.lab4.model.GraphicalObject;
+import hr.zemris.ooup.lab4.util.*;
 import hr.zemris.ooup.lab4.util.Point;
+import hr.zemris.ooup.lab4.util.Rectangle;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -51,7 +53,6 @@ public class SelectShapeState implements State{
         if (model.getSelectedObjects().size() == 1) {
             GraphicalObject obj = (GraphicalObject) model.getSelectedObjects().get(0);
             int hpIndex = model.findSelectedHotPoint(obj, mousePoint);
-            System.out.println(hpIndex);
             if (hpIndex != -1) {
                 obj.setHotPointSelected(hpIndex, true);
                 obj.setHotPoint(hpIndex, mousePoint);
@@ -95,7 +96,6 @@ public class SelectShapeState implements State{
                 CompositeShape cs = (CompositeShape)model.getSelectedObjects().get(0);
 
                 for (Object o : cs.list()) {
-                    System.out.println(((GraphicalObject) o).getShapeName());
                     model.addGraphicalObject((GraphicalObject) o);
                 }
                 model.removeGraphicalObject(cs);
@@ -113,7 +113,22 @@ public class SelectShapeState implements State{
     }
 
     @Override
-    public void afterDraw(Renderer r, Graphics graphics) {
+    public void afterDraw(Renderer r, Graphics g) {
+//        g.setColor(Color.blue);
+//        if (model.getSelectedObjects().size() == 1) {
+//            GraphicalObject obj = (GraphicalObject)model.getSelectedObjects().get(0);
+//            for (int i = 0; i < obj.getNumberOfHotPoints(); i++) {
+//                Point hp = obj.getHotPoint(i);
+//                g.drawRect(hp.getX()-2, hp.getY()-2,4,4);
+//            }
+//        }
+//
+//        for (Object o : model.getSelectedObjects()) {
+//            Rectangle rect = ((GraphicalObject) o).getBoundingBox();
+//            g.drawRect(rect.getX(), rect.getY(), rect.getWidth(),rect.getHeight());
+//        }
+
+
 
     }
 

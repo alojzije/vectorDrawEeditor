@@ -87,8 +87,7 @@ public class GUI extends JFrame implements DocumentModelListener {
     @Override
     public void documentChange() {
         this.repaint();
-
-        currentState.afterDraw(r, canvas.getGraphics());
+        //currentState.afterDraw(r, canvas.getGraphics());
     }
 
     private class ListenForMouse implements MouseListener {
