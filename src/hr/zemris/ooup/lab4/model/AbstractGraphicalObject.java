@@ -57,7 +57,7 @@ public abstract class AbstractGraphicalObject implements GraphicalObject{
 
     @Override
     public void setHotPointSelected(int index, boolean selected) {
-        hotPointSelected[index] = true;
+        hotPointSelected[index] = selected;
     }
 
     @Override

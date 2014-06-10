@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -217,7 +218,7 @@ public class GUI extends JFrame implements DocumentModelListener {
         if (fileChooser.showOpenDialog(GUI.this) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             try {
-               rows = Files.readAllLines(Paths.get(file.getAbsolutePath()));
+               rows = Files.readAllLines(Paths.get(file.getAbsolutePath()), Charset.defaultCharset());
 
             } catch (java.io.IOException e) {
                 e.printStackTrace();

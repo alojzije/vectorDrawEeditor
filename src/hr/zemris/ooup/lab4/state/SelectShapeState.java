@@ -29,7 +29,6 @@ public class SelectShapeState implements State{
     @Override
     public void mouseDown(Point mousePoint, boolean shiftDown, boolean ctrlDown) {
         // if ctrl is down deselect all selected  objects
-        // select hot point if only one object selected
         if (!ctrlDown) {
             for (Object go : model.list()) {
                 ((GraphicalObject) go).setSelected(false);
@@ -38,23 +37,39 @@ public class SelectShapeState implements State{
         GraphicalObject obj = model.findSelectedGraphicalObject(mousePoint);
         if (obj != null) obj.setSelected(true);
 
+        //is hot point selected
+        if (!ctrlDown && model.getSelectedObjects().size() == 1) {
+            int hpIndex = model.findSelectedHotPoint(obj, mousePoint);
+            if (hpIndex != -1)
+                obj.setHotPointSelected(hpIndex, true);
+
+        }
+
 
     }
 
     @Override
     public void mouseUp(Point mousePoint, boolean shiftDown, boolean ctrlDown) {
-
+        if (model.getSelectedObjects().size() == 1) {
+            GraphicalObject obj = (GraphicalObject) model.getSelectedObjects().get(0);
+            for (int i = 0; i < obj.getNumberOfHotPoints(); i++) {
+                if (obj.isHotPointSelected(i))
+                    obj.setHotPointSelected(i, false);
+            }
+        }
     }
 
     @Override
     public void mouseDragged(Point mousePoint) {
         if (model.getSelectedObjects().size() == 1) {
+            int hpIndex = -1;
             GraphicalObject obj = (GraphicalObject) model.getSelectedObjects().get(0);
-            int hpIndex = model.findSelectedHotPoint(obj, mousePoint);
-            if (hpIndex != -1) {
-                obj.setHotPointSelected(hpIndex, true);
-                obj.setHotPoint(hpIndex, mousePoint);
+            for (int i = 0; i < obj.getNumberOfHotPoints(); i++) {
+                if (obj.isHotPointSelected(i))
+                    hpIndex = i;
             }
+            if (hpIndex != -1)
+                obj.setHotPoint(hpIndex, mousePoint);
         }
 
     }
