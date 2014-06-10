@@ -1,4 +1,4 @@
-package hr.zemris.ooup.lab4;
+package hr.zemris.ooup.lab4.renderer;
 
 import hr.zemris.ooup.lab4.util.Point;
 import hr.zemris.ooup.lab4.util.Rectangle;

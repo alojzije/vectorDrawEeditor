@@ -1,12 +1,10 @@
 package hr.zemris.ooup.lab4.state;
 
 import hr.zemris.ooup.lab4.DocumentModel;
-import hr.zemris.ooup.lab4.Renderer;
+import hr.zemris.ooup.lab4.renderer.Renderer;
 import hr.zemris.ooup.lab4.model.CompositeShape;
 import hr.zemris.ooup.lab4.model.GraphicalObject;
-import hr.zemris.ooup.lab4.util.*;
 import hr.zemris.ooup.lab4.util.Point;
-import hr.zemris.ooup.lab4.util.Rectangle;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

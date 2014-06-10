@@ -2,15 +2,17 @@ package hr.zemris.ooup.lab4;
 
 import hr.zemris.ooup.lab4.model.GraphicalObject;
 import hr.zemris.ooup.lab4.model.GraphicalObjectFactory;
-import hr.zemris.ooup.lab4.model.LineSegment;
-import hr.zemris.ooup.lab4.model.Oval;
+import hr.zemris.ooup.lab4.renderer.*;
 import hr.zemris.ooup.lab4.state.*;
 import hr.zemris.ooup.lab4.util.*;
 import hr.zemris.ooup.lab4.util.Point;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class GUI extends JFrame implements DocumentModelListener {
 
 
     Graphics2D myGraphic = new myGraphic();
-    Renderer r           = new G2DRendererImpl(myGraphic);
+    hr.zemris.ooup.lab4.renderer.Renderer r           = new G2DRendererImpl(myGraphic);
 
     List objects;
 
@@ -60,11 +62,11 @@ public class GUI extends JFrame implements DocumentModelListener {
     }
 
     private void addToolbar() {
-
         buttons.add(new JButton("line"));
         buttons.add(new JButton("oval"));
         buttons.add(new JButton("selektiraj"));
         buttons.add(new JButton("brisi"));
+        buttons.add(new JButton("SVGexport"));
         for (JButton b : buttons) {
             b.addActionListener(lForToolbar);
             toolbar.add(b);
@@ -153,10 +155,34 @@ public class GUI extends JFrame implements DocumentModelListener {
             }else if (buttonType == "brisi") {
                 currentState.onLeaving();
                 currentState = new EraserState(docModel, GUI.this, canvas);
-
+            }else if (buttonType == "SVGexport") {
+                currentState.onLeaving();
+                currentState = new IdleState();
+                String fileName = pitajIme();
+                SVGRendererImpl svgRenderer = new SVGRendererImpl(fileName);
+                for(Object o: docModel.list())
+                    ((GraphicalObject)o).render(svgRenderer);
+                svgRenderer.close();
+                currentState = new EraserState(docModel, GUI.this, canvas);
             }
 
         }
+    }
+
+    private String pitajIme() {
+        String path = "";
+        FileNameExtensionFilter svgFilter = new FileNameExtensionFilter("svg", "svg");
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        fileChooser.setFileFilter(svgFilter);
+        if (fileChooser.showSaveDialog(GUI.this) == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            // save to file
+            path = file.getAbsolutePath() ;
+
+        }
+        System.out.println(path);
+        return path + ".svg";
     }
 
 

@@ -1,7 +1,7 @@
 package hr.zemris.ooup.lab4;
 
 import hr.zemris.ooup.lab4.model.GraphicalObject;
-import hr.zemris.ooup.lab4.util.*;
+import hr.zemris.ooup.lab4.renderer.*;
 import hr.zemris.ooup.lab4.util.Point;
 import hr.zemris.ooup.lab4.util.Rectangle;
 
@@ -21,7 +21,7 @@ public class Canvas extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D)g;
-        Renderer r = new G2DRendererImpl(g2d);
+        hr.zemris.ooup.lab4.renderer.Renderer r = new G2DRendererImpl(g2d);
         for(Object o: docModel.list())
             ((GraphicalObject)o).render(r);
 
