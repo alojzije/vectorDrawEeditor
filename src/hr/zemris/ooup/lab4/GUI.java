@@ -69,13 +69,14 @@ public class GUI extends JFrame implements DocumentModelListener {
     }
 
     private void addToolbar() {
+        buttons.add(new JButton("Ucitaj"));
+        buttons.add(new JButton("Pohrani"));
+        buttons.add(new JButton("SVGexport"));
         buttons.add(new JButton("Line"));
         buttons.add(new JButton("Oval"));
         buttons.add(new JButton("Selektiraj"));
-        buttons.add(new JButton("Brisi"));
-        buttons.add(new JButton("SVGexport"));
-        buttons.add(new JButton("Pohrani"));
-        buttons.add(new JButton("Ucitaj"));
+        buttons.add(new JButton("Brisalo"));
+
         for (JButton b : buttons) {
             b.addActionListener(lForToolbar);
             toolbar.add(b);
@@ -85,7 +86,7 @@ public class GUI extends JFrame implements DocumentModelListener {
     }
 
     private void initializeFrame() {
-        this.setSize(400, 400);
+        this.setSize(500, 400);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());

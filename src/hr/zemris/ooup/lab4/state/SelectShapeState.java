@@ -109,7 +109,9 @@ public class SelectShapeState implements State{
                 CompositeShape cs = (CompositeShape)model.getSelectedObjects().get(0);
 
                 for (Object o : cs.list()) {
-                    model.addGraphicalObject((GraphicalObject) o);
+                    GraphicalObject obj = (GraphicalObject) o;
+                    model.addGraphicalObject(obj);
+                    if(!obj.isSelected()) obj.setSelected(true);
                 }
                 model.removeGraphicalObject(cs);
 
