@@ -6,6 +6,7 @@ import hr.zemris.ooup.lab4.util.Point;
 import hr.zemris.ooup.lab4.util.Rectangle;
 
 import java.util.List;
+import java.util.Stack;
 
 import static java.lang.Math.abs;
 
@@ -80,6 +81,15 @@ public class LineSegment extends AbstractGraphicalObject {
     @Override
     public String getShapeID() {
         return "@LINE";
+    }
+
+    @Override
+    public void load(Stack<GraphicalObject> stack, String data) {
+        GraphicalObject o = this.duplicate();
+        String[] points = data.split(" ");
+        o.setHotPoint(0, new Point(Integer.parseInt(points[0]), Integer.parseInt(points[1])));
+        o.setHotPoint(1, new Point(Integer.parseInt(points[2]), Integer.parseInt(points[3])));
+        stack.push(o);
     }
 
     @Override

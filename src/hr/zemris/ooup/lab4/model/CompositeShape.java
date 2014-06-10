@@ -5,9 +5,11 @@ import hr.zemris.ooup.lab4.renderer.Renderer;
 import hr.zemris.ooup.lab4.util.Point;
 import hr.zemris.ooup.lab4.util.Rectangle;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by alojzije on 9.6.2014..
@@ -132,6 +134,15 @@ public class CompositeShape implements GraphicalObject {
     @Override
     public String getShapeID() {
         return "@COMP";
+    }
+
+    @Override
+    public void load(Stack<GraphicalObject> stack, String data) {
+        int childNb = Integer.parseInt(data);
+        ArrayList<GraphicalObject> objs = new ArrayList<GraphicalObject>();
+        for (int i = 0; i < childNb; i++)
+            this.objects.add(stack.pop());
+        stack.push(this.duplicate());
     }
 
     @Override

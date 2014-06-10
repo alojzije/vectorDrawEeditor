@@ -6,6 +6,7 @@ import hr.zemris.ooup.lab4.util.Point;
 import hr.zemris.ooup.lab4.util.Rectangle;
 
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by alojzije on 7.6.2014..
@@ -47,7 +48,7 @@ public interface GraphicalObject {
 
     // podrska za snimanje i ucitavanje
     public String getShapeID();
-//    public void   load(Stack<hr.zemris.ooup.lab4.model.GraphicalObject> stack, String data);
+    public void   load(Stack<GraphicalObject> stack, String data);
     public void   save(List<String> rows);
 
 }

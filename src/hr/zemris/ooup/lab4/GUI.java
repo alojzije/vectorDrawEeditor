@@ -14,9 +14,13 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by alojzije on 8.6.2014..
@@ -70,6 +74,7 @@ public class GUI extends JFrame implements DocumentModelListener {
         buttons.add(new JButton("Brisi"));
         buttons.add(new JButton("SVGexport"));
         buttons.add(new JButton("Pohrani"));
+        buttons.add(new JButton("Ucitaj"));
         for (JButton b : buttons) {
             b.addActionListener(lForToolbar);
             toolbar.add(b);
@@ -173,6 +178,19 @@ public class GUI extends JFrame implements DocumentModelListener {
                 for(Object o: docModel.list())
                     ((GraphicalObject)o).save(rows);
                 writeOut(fileName, rows);
+            }else if (buttonType == "Ucitaj") {
+                List<String> rows = loadFile();
+                Stack<GraphicalObject> objStack = new Stack<GraphicalObject>();
+                for (String r : rows) {
+                    String ID = r.substring(0, r.indexOf(" "));
+                    GraphicalObject o = GraphicalObjectFactory.graphicalObjectMap.get(ID);
+                    o.load(objStack, r.substring(r.indexOf(" ") + 1));
+
+                }
+                for (GraphicalObject o : objStack)
+                    docModel.addGraphicalObject(o);
+
+
             }
 
         }
@@ -189,6 +207,29 @@ public class GUI extends JFrame implements DocumentModelListener {
             e.printStackTrace();
         }
     }
+    private List<String> loadFile() {
+        List<String> rows = new ArrayList<String>();
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("txt", new String[]{"txt"});
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        fileChooser.setFileFilter(filter);
+        if (fileChooser.showOpenDialog(GUI.this) == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            try {
+               rows = Files.readAllLines(Paths.get(file.getAbsolutePath()));
+
+            } catch (java.io.IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        for (String r : rows) {
+            System.out.println(r);
+        }
+        return rows;
+    }
+
 
     private String pitajIme() {
         String path = "";
@@ -198,9 +239,7 @@ public class GUI extends JFrame implements DocumentModelListener {
         fileChooser.setFileFilter(filter);
         if (fileChooser.showSaveDialog(GUI.this) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
-            // save to file
             path = file.getAbsolutePath() ;
-
         }
         System.out.println(path);
         return path;
