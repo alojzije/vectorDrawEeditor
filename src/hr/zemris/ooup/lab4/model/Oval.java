@@ -6,6 +6,7 @@ import hr.zemris.ooup.lab4.util.Point;
 import hr.zemris.ooup.lab4.util.Rectangle;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static java.lang.Math.abs;
 
@@ -90,6 +91,19 @@ public class Oval extends AbstractGraphicalObject {
     public GraphicalObject duplicate() {
         return new Oval(this.getHotPoint(0), this.getHotPoint(1));
     }
+
+    @Override
+    public String getShapeID() {
+        return "@OVAL";
+    }
+
+    @Override
+    public void save(List<String> rows) {
+        String right  = getHotPoint(1).getX() + " " + getHotPoint(1).getY();
+        String bottom = getHotPoint(0).getX() + " " + getHotPoint(0).getY();
+        rows.add(getShapeID() + " " + right + " " + bottom);
+    }
+
     @Override
     public void translate(Point delta) {
         center = center.translate(delta);

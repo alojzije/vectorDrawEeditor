@@ -5,6 +5,8 @@ import hr.zemris.ooup.lab4.util.GeometryUtil;
 import hr.zemris.ooup.lab4.util.Point;
 import hr.zemris.ooup.lab4.util.Rectangle;
 
+import java.util.List;
+
 import static java.lang.Math.abs;
 
 /**
@@ -73,5 +75,18 @@ public class LineSegment extends AbstractGraphicalObject {
     @Override
     public GraphicalObject duplicate() {
         return new LineSegment(this.getHotPoint(0), this.getHotPoint(1));
+    }
+
+    @Override
+    public String getShapeID() {
+        return "@LINE";
+    }
+
+    @Override
+    public void save(List<String> rows) {
+        String e = getHotPoint(1).getX() + " " + getHotPoint(1).getY();
+        String s = getHotPoint(0).getX() + " " + getHotPoint(0).getY();
+        rows.add(getShapeID() + " " + s + " " + e);
+
     }
 }

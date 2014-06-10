@@ -2,21 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eac338d8-9db5-4219-8a1e-5c2e57162437" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/renderer/SVGRendererImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/AddShapeState.java" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/AddShapeState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/Canvas.java" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/Canvas.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/CompositeShape.java" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/CompositeShape.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/EraserState.java" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/EraserState.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/GUI.java" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/GUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/GraphicalObject.java" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/GraphicalObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/IdleState.java" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/IdleState.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/LineSegment.java" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/LineSegment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/Oval.java" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/Oval.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/SelectShapeState.java" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/SelectShapeState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/State.java" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/State.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="X:\ooup\vectorDrawEeditor\src\hr\zemris\ooup\lab4\G2DRendererImpl.java" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/renderer/G2DRendererImpl.java" />
-      <change type="MOVED" beforePath="X:\ooup\vectorDrawEeditor\src\hr\zemris\ooup\lab4\Renderer.java" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/renderer/Renderer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/renderer/SVGRendererImpl.java" afterPath="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/renderer/SVGRendererImpl.java" />
     </list>
     <ignored path="vectorDrawEeditor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,21 +30,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GUI.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="GUI.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2210" max-vertical-offset="3043">
-              <caret line="178" column="26" selection-start-line="178" selection-start-column="26" selection-end-line="178" selection-end-column="27" />
-              <folding />
+            <state vertical-scroll-proportion="0.50591713" vertical-offset="2225" max-vertical-offset="3672">
+              <caret line="151" column="85" selection-start-line="151" selection-start-column="85" selection-end-line="151" selection-end-column="85" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#953#962#0" expanded="true" />
+                <element signature="e#3662#3663#0" expanded="true" />
+                <element signature="e#3742#3743#0" expanded="true" />
+                <element signature="e#6087#6095#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SVGRendererImpl.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="SVGRendererImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/renderer/SVGRendererImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2801161" vertical-offset="96" max-vertical-offset="1003">
-              <caret line="17" column="75" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1003">
+              <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,21 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="State.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/State.java">
+      <file leaf-file-name="Oval.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/Oval.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
-              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Canvas.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/Canvas.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="113" max-vertical-offset="748">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1126" max-vertical-offset="1802">
+              <caret line="103" column="60" selection-start-line="103" selection-start-column="60" selection-end-line="103" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -106,26 +93,26 @@
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/DocumentModelListener.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/G2DRenderedImpl.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/util/myGraphic.java" />
-        <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/GraphicalObject.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/State.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/IdleState.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/util/Point.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/testMain.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/Renderer.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/GraphicalObjectFactory.java" />
-        <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/LineSegment.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/util/GeometryUtil.java" />
-        <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/Oval.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/EraserState.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/AddShapeState.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/G2DRendererImpl.java" />
-        <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/CompositeShape.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/Canvas.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/DocumentModel.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/AbstractGraphicalObject.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/SelectShapeState.java" />
-        <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/GUI.java" />
+        <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/GraphicalObject.java" />
+        <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/Oval.java" />
+        <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/LineSegment.java" />
+        <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/CompositeShape.java" />
         <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/renderer/SVGRendererImpl.java" />
+        <option value="$PROJECT_DIR$/src/hr/zemris/ooup/lab4/GUI.java" />
       </list>
     </option>
   </component>
@@ -505,8 +492,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13135593" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2306867" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22139831" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2306867" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282636" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -629,7 +616,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1598" max-vertical-offset="2516">
           <caret line="94" column="22" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#953#962#0" expanded="true" />
+            <element signature="e#3662#3663#0" expanded="true" />
+            <element signature="e#3742#3743#0" expanded="true" />
+            <element signature="e#6087#6095#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -712,7 +705,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="631" max-vertical-offset="1853">
           <caret line="86" column="42" selection-start-line="86" selection-start-column="42" selection-end-line="86" selection-end-column="42" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#953#962#0" expanded="true" />
+            <element signature="e#3662#3663#0" expanded="true" />
+            <element signature="e#3742#3743#0" expanded="true" />
+            <element signature="e#6087#6095#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -839,16 +838,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/GraphicalObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="969">
-          <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/AddShapeState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.47826087" vertical-offset="467" max-vertical-offset="1088">
@@ -857,48 +846,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/CompositeShape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3832529" vertical-offset="93" max-vertical-offset="2261">
-          <caret line="66" column="41" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_05/src.zip!/java/awt/event/MouseListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7763158" vertical-offset="531" max-vertical-offset="1139">
           <caret line="82" column="16" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/LineSegment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47241378" vertical-offset="610" max-vertical-offset="1190">
-          <caret line="59" column="31" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/Oval.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33275864" vertical-offset="368" max-vertical-offset="1615">
-          <caret line="40" column="22" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/AbstractGraphicalObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="232" max-vertical-offset="1479">
-          <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
-          <folding>
-            <element signature="e#1452#1453#0" expanded="true" />
-            <element signature="e#1498#1499#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -929,36 +881,89 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1233672" vertical-offset="0" max-vertical-offset="689">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/Canvas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="117" max-vertical-offset="748">
+        <state vertical-scroll-proportion="0.777939" vertical-offset="59" max-vertical-offset="748">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/AbstractGraphicalObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="232" max-vertical-offset="1479">
+          <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/GraphicalObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.92254734" vertical-offset="314" max-vertical-offset="1003">
+          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/LineSegment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0105634" vertical-offset="616" max-vertical-offset="1411">
+          <caret line="85" column="41" selection-start-line="85" selection-start-column="41" selection-end-line="85" selection-end-column="41" />
+          <folding>
+            <element signature="e#2130#2131#0" expanded="true" />
+            <element signature="e#2160#2161#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/CompositeShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50880283" vertical-offset="1734" max-vertical-offset="2414">
+          <caret line="139" column="26" selection-start-line="139" selection-start-column="26" selection-end-line="139" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/renderer/SVGRendererImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1003">
+          <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/model/Oval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1228" max-vertical-offset="1802">
+          <caret line="103" column="60" selection-start-line="103" selection-start-column="60" selection-end-line="103" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2210" max-vertical-offset="3043">
-          <caret line="178" column="26" selection-start-line="178" selection-start-column="26" selection-end-line="178" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/state/State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hr/zemris/ooup/lab4/renderer/SVGRendererImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2801161" vertical-offset="96" max-vertical-offset="1003">
-          <caret line="17" column="75" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
+        <state vertical-scroll-proportion="0.50591713" vertical-offset="2225" max-vertical-offset="3672">
+          <caret line="151" column="85" selection-start-line="151" selection-start-column="85" selection-end-line="151" selection-end-column="85" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#953#962#0" expanded="true" />
+            <element signature="e#3662#3663#0" expanded="true" />
+            <element signature="e#3742#3743#0" expanded="true" />
+            <element signature="e#6087#6095#0" expanded="true" />
           </folding>
         </state>
       </provider>

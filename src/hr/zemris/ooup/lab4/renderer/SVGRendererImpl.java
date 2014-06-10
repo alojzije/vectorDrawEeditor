@@ -14,7 +14,7 @@ public class SVGRendererImpl implements Renderer {
 
     public SVGRendererImpl(String fileName) {
         try {
-            svgExport = new PrintWriter(fileName);
+            svgExport = new PrintWriter(fileName+ ".svg");
             svgExport.println("<svg  xmlns=\"http://www.w3.org/2000/svg\"");
             svgExport.println("\txmlns:xlink=\"http://www.w3.org/1999/xlink\">\n");
 

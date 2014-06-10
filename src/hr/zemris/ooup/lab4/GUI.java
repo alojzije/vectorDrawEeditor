@@ -13,6 +13,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,11 +64,12 @@ public class GUI extends JFrame implements DocumentModelListener {
     }
 
     private void addToolbar() {
-        buttons.add(new JButton("line"));
-        buttons.add(new JButton("oval"));
-        buttons.add(new JButton("selektiraj"));
-        buttons.add(new JButton("brisi"));
+        buttons.add(new JButton("Line"));
+        buttons.add(new JButton("Oval"));
+        buttons.add(new JButton("Selektiraj"));
+        buttons.add(new JButton("Brisi"));
         buttons.add(new JButton("SVGexport"));
+        buttons.add(new JButton("Pohrani"));
         for (JButton b : buttons) {
             b.addActionListener(lForToolbar);
             toolbar.add(b);
@@ -139,20 +142,20 @@ public class GUI extends JFrame implements DocumentModelListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             String buttonType = ((JButton) e.getSource()).getText();
-            if (buttonType == "line") {
+            if (buttonType == "Line") {
                 currentState.onLeaving();
-                GraphicalObject obj = GraphicalObjectFactory.getGraphicalObject(buttonType);
+                GraphicalObject obj = GraphicalObjectFactory.getGraphicalObject("line");
                 objects.add(obj);
                 currentState = new AddShapeState(docModel, obj);
-            }else if (buttonType == "oval") {
+            }else if (buttonType == "Oval") {
                 currentState.onLeaving();
-                GraphicalObject obj = GraphicalObjectFactory.getGraphicalObject(buttonType);
+                GraphicalObject obj = GraphicalObjectFactory.getGraphicalObject("oval");
                 objects.add(obj);
                 currentState = new AddShapeState(docModel, obj);
-            }else if (buttonType == "selektiraj") {
+            }else if (buttonType == "Selektiraj") {
                 currentState.onLeaving();
                 currentState = new SelectShapeState(docModel, objects, r);
-            }else if (buttonType == "brisi") {
+            }else if (buttonType == "Brisi") {
                 currentState.onLeaving();
                 currentState = new EraserState(docModel, GUI.this, canvas);
             }else if (buttonType == "SVGexport") {
@@ -164,17 +167,35 @@ public class GUI extends JFrame implements DocumentModelListener {
                     ((GraphicalObject)o).render(svgRenderer);
                 svgRenderer.close();
                 currentState = new EraserState(docModel, GUI.this, canvas);
+            }else if (buttonType == "Pohrani") {
+                String fileName = pitajIme();
+                List<String> rows = new ArrayList<String>();
+                for(Object o: docModel.list())
+                    ((GraphicalObject)o).save(rows);
+                writeOut(fileName, rows);
             }
 
         }
     }
 
+    private void writeOut(String fileName, List<String> rows) {
+        try {
+            PrintWriter txtWriter = new PrintWriter(fileName + ".txt");
+            for (String line : rows)
+                txtWriter.println(line);
+            txtWriter.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     private String pitajIme() {
         String path = "";
-        FileNameExtensionFilter svgFilter = new FileNameExtensionFilter("svg", "svg");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("svg & txt", new String[]{"svg","txt"});
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setAcceptAllFileFilterUsed(false);
-        fileChooser.setFileFilter(svgFilter);
+        fileChooser.setFileFilter(filter);
         if (fileChooser.showSaveDialog(GUI.this) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             // save to file
@@ -182,7 +203,7 @@ public class GUI extends JFrame implements DocumentModelListener {
 
         }
         System.out.println(path);
-        return path + ".svg";
+        return path;
     }
 
 
