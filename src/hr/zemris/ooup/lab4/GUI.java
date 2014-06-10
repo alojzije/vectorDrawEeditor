@@ -162,7 +162,7 @@ public class GUI extends JFrame implements DocumentModelListener {
             }else if (buttonType == "Selektiraj") {
                 currentState.onLeaving();
                 currentState = new SelectShapeState(docModel, objects, r);
-            }else if (buttonType == "Brisi") {
+            }else if (buttonType == "Brisalo") {
                 currentState.onLeaving();
                 currentState = new EraserState(docModel, GUI.this, canvas);
             }else if (buttonType == "SVGexport") {
